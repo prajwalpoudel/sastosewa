@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 .nav-link {
-    @apply hover:bg-rose-700 py-4 px-4 cursor-pointer;
+    @apply hover:bg-rose-700 cursor-pointer;
+}
+.nav-link>a {
+    @apply block py-4 px-4;
+}
+.active-nav-link {
+    @apply bg-rose-700 text-white;
 }
 .card {
     @apply border-2 shadow-xl rounded-lg;
@@ -16,6 +22,9 @@
     @apply text-2xl py-2 font-bold pb-4 tracking-normal text-primary
 }
 .text-service-title {
+    @apply text-2xl py-2 font-medium tracking-normal text-rose-700
+}
+.text-no-ticket-title {
     @apply text-2xl py-2 font-medium tracking-normal text-rose-700
 }
 
@@ -52,7 +61,7 @@
 }
 
 .dropdown-content {
-    @apply absolute hidden group-hover:block z-10 border-2 bg-white top-full left-0 right-auto w-max divide-y-2 text-gray-700;
+    @apply absolute hidden group-hover:block z-30 border-2 bg-white top-full left-0 right-auto w-max divide-y-2 text-gray-700;
 }
 
 .dropdown-content>div {

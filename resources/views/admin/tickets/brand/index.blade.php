@@ -7,12 +7,12 @@
                         <span class="kt-portlet__head-icon">
                         </span>
                 <h3 class="kt-portlet__head-title">
-                    Ticket
+                    Ticket Brand
                 </h3>
             </div>
             <div class="kt-portlet__head-toolbar">
                 <div class="kt-portlet__head-actions">
-                    <a href="{{ route('admin.ticket.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.ticket.brand.create') }}" class="btn btn-primary">
                         <i class="fa fa-plus"></i>
                         Create
                     </a>
@@ -22,18 +22,13 @@
         <div class="kt-portlet__body">
             <table
                 class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer"
-                width="100%" id="ticket-table">
+                width="100%" id="ticket-brand-table">
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
                     <th>Category</th>
-                    <th>Date</th>
-                    <th>Departure Time</th>
-                    <th>Arrival Time</th>
-                    <th>No. of tickets</th>
-                    <th>Total Price</th>
-                    <th>Status</th>
+                    <th>Logo</th>
                     <th style="text-align: center">Actions</th>
                 </tr>
                 </thead>
@@ -44,8 +39,8 @@
 
 @push('script')
     <script type="application/javascript">
-        var url = '{{ route('admin.ticket.index') }}';
-        var gradeTable = $('#ticket-table').DataTable({
+        var url = '{{ route('admin.ticket.brand.index') }}';
+        var gradeTable = $('#ticket-brand-table').DataTable({
             processing: true,
             serverSide: true,
             autoWidth: false,
@@ -57,14 +52,9 @@
             order: [[1, 'asc']],
             columns: [
                 {data: 'DT_RowIndex', searchable: false, orderable: false, width: '5%'},
-                {data: 'brand.name', name: 'brand.name'},
+                {data: 'name', name: 'name'},
                 {data: 'category.name', name: 'category.name'},
-                {data: 'date', name: 'date'},
-                {data: 'departure_time', name: 'departure_time'},
-                {data: 'arrival_time', name: 'arrival_time'},
-                {data: 'price', name: 'price'},
-                {data: 'price', name: 'price'},
-                {data: 'status', name: 'status'},
+                {data: 'logo', name: 'logo'},
                 {data: 'action', 'name': 'action', searchable: false, orderable: false, className: 'dt-body-center'}
             ],
         });

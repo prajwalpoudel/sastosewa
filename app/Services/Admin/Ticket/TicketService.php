@@ -64,6 +64,6 @@ class TicketService extends BaseService
      * @return Collection|Model[]
      */
     public function datatableQuery() {
-        return $this->query()->with('category');
+        return $this->query()->with(['category', 'brand'])->select('tickets.*');
     }
 }

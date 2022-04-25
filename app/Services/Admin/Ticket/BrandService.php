@@ -1,26 +1,25 @@
 <?php
 
 
-namespace App\Services\Admin\Cms;
+namespace App\Services\Admin\Ticket;
 
 
-use App\Models\Cms\Section;
+use App\Models\Ticket\Brand;
 use App\Services\General\BaseService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 
-class SectionService extends BaseService
+class BrandService extends BaseService
 {
     private DataTables $dataTables;
 
     /**
-     * SectionService constructor.
-     * @param DataTables $dataTables
+     * BrandService constructor.
+     * @param BrandService $brandService
      */
-    public function __construct(
-        DataTables $dataTables
-    )
+    public function __construct(DataTables $dataTables)
     {
         parent::__construct();
         $this->dataTables = $dataTables;
@@ -28,33 +27,32 @@ class SectionService extends BaseService
 
     public function model()
     {
-        return Section::class;
+        return Brand::class;
     }
 
     /**
      * @return mixed
      * @throws \Exception
      */
-    public function datatable()
-    {
+    public function datatable() {
         $query = $this->datatableQuery();
 
         return $this->dataTables->of($query)
-            ->editColumn('page_title', function($q) {
-                $otherLinks = '<a class="mr-1 pr-2" href="'. route("admin.page.media.create", $q) .'"> <i class="la la-camera la-lg"></i></a>';
-                return $q->page_title . ' '. $otherLinks ;
+            ->editColumn('logo', function ($q) {
+                return '<img src='.Storage::url($q->logo). ' height="60px;" width="100px;">';
+
             })
             ->addColumn('action', function ($q) {
                 $params = [
-                    'route' => 'admin.page.section',
+                    'route' => 'admin.ticket.brand',
                     'id' => $q->id,
                     'edit' => true,
-                    'delete' => true
+                    'delete' => true,
                 ];
 
                 return view('admin.datatable.action', compact('params'));
             })
-            ->rawColumns(['page_title', 'action'])
+            ->rawColumns(['logo', 'action'])
             ->addIndexColumn()
             ->make(true);
     }
@@ -63,6 +61,6 @@ class SectionService extends BaseService
      * @return Collection|Model[]
      */
     public function datatableQuery() {
-        return $this->query()->with('page')->select('sections.*');
+        return $this->query()->with('category')->select('ticket_brands.*');
     }
 }

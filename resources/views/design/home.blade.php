@@ -3,7 +3,7 @@
 @section('content')
     <section id="tickets-section">
         <div class="banner w-full h-72 bg-gray-100 relative">
-            <img class="w-full h-72 object-cover opacity-60" src="{{ asset('images/everest.jpg') }}" alt="">
+            <img class="w-full h-72 object-cover " src="{{ asset('images/everest.jpg') }}" alt="">
             <div class="search absolute inset-y-4 left-8">
                 <div class="text-white tracking-wider">
                     <p class="text-4xl font-bold uppercase">Sasto Sewa presents you sasto tickets.</p>
@@ -202,7 +202,7 @@
             <div class="text-title text-capitalize text-center my-2 font-bold">
                 <p>Testimonials</p>
             </div>
-            <div class="after:bg-everest bg-center bg-fixed after:opacity-80 -z-10">
+            <div class="bg-everest bg-center bg-fixed mix-blend-luminosity bg-opacity-60">
                 <p class="text-white text-xl font-medium">Plan Nepal Travels & Tours (p.) Ltd. a leading online travel agency in Nepal.
                     A Destination Management Company in Nepal, We are one of key travel agents in Nepal that brings tours of "Incredible Nepal",
                     the country that has mystified the world for centuries. Your tour to Nepal, a colorfully diverse country,
