@@ -50,9 +50,9 @@ class PagesTableSeeder extends Seeder
             ]
         ];
 
-        $this->pageService->truncate();
+//        $this->pageService->truncate();
         foreach($pages as $page) {
-            $this->pageService->create($page);
+            $this->pageService->updateOrCreate(['title' => $page['title']], $page);
         }
     }
 }

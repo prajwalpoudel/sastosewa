@@ -74,9 +74,9 @@
 
         <div class="form-group row">
             <div class="col-lg-12">
-                {!! Form::label('equipments', 'Equipments :') !!}
-                {!! Form::textarea('equipments', null, ['class' => 'form-control']) !!}
-                @error('equipments')
+                {!! Form::label('equipment', 'Equipments :') !!}
+                {!! Form::textarea('equipment', null, ['class' => 'form-control']) !!}
+                @error('equipment')
                 <div id="name" class="error invalid-feedback"> {{ $message }}</div>
                 @enderror
             </div>
@@ -102,18 +102,18 @@
         </div>
         <div class="form-group row">
             <div class="col-lg-12">
-                {!! Form::label('price_includes', 'Price Includes :') !!}
-                {!! Form::textarea('price_includes', null, ['class' => 'form-control']) !!}
-                @error('price_includes')
+                {!! Form::label('price_inclusive', 'Price Includes :') !!}
+                {!! Form::textarea('price_inclusive', null, ['class' => 'form-control']) !!}
+                @error('price_inclusive')
                 <div id="name" class="error invalid-feedback"> {{ $message }}</div>
                 @enderror
             </div>
         </div>
         <div class="form-group row">
             <div class="col-lg-12">
-                {!! Form::label('price_excludes', 'Price does not include :') !!}
-                {!! Form::textarea('price_excludes', null, ['class' => 'form-control']) !!}
-                @error('price_excludes')
+                {!! Form::label('price_exclusive', 'Price does not include :') !!}
+                {!! Form::textarea('price_exclusive', null, ['class' => 'form-control']) !!}
+                @error('price_exclusive')
                 <div id="name" class="error invalid-feedback"> {{ $message }}</div>
                 @enderror
             </div>

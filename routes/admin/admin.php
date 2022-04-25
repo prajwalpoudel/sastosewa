@@ -3,13 +3,17 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::group([ 'namespace' => 'Page' ], function() {
     Route::group([ 'as' => 'page.' ], function() {
         Route::resource('/page/section', 'SectionController');
+        Route::get('/page/media/', 'MediaController@index')->name('media.index');
         Route::get('/page/media/{sectionId}/create', 'MediaController@create')->name('media.create');
+        Route::post('/page/media/', 'MediaController@store')->name('media.store');
+        Route::delete('/page/media/{mediaId}/delete', 'MediaController@destroy')->name('media.destroy');
     });
     Route::resource('/page', 'PageController');
 });
 Route::group([ 'namespace' => 'Ticket' ], function() {
     Route::group([ 'as' => 'ticket.' ], function() {
         Route::resource('/ticket/category', 'CategoryController');
+        Route::resource('/ticket/brand', 'BrandController');
     });
     Route::resource('/ticket', 'TicketController');
 });
@@ -21,5 +25,7 @@ Route::group([ 'namespace' => 'Tour' ], function() {
 });
 Route::resource('message', 'MessageController')->only(['index', 'show']);
 Route::resource('setting', 'SettingController');
+Route::resource('testimonial', 'TestimonialController');
+
 
 

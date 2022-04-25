@@ -1,5 +1,6 @@
 <div class="kt-portlet__body">
     <div class="form-group row">
+        {!! Form::hidden('section_id', $section->id) !!}
         <div class="col-lg-6">
             {!! Form::label('type', 'Type :') !!}
             {!!Form::select('type', $types, null, ['class' => 'form-control', 'id' => 'type'])!!}
@@ -11,7 +12,7 @@
     <div class="form-group row">
         <div class="col-lg-6">
             {!! Form::label('media', 'Media :') !!}
-            {!!Form::select('media', $types, null, ['class' => 'form-control', 'id' => 'type'])!!}
+            {!!Form::file('media', null, ['class' => 'form-control', 'id' => 'type'])!!}
             @error('type'))
             <div id="parent_id" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
