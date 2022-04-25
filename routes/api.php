@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/category/{id}/brands', function ($id) {
+    return app(\App\Services\Admin\Ticket\BrandService::class)->query()->where(['category_id' => $id])->select('id', 'name as text')->get();
+});

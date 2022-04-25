@@ -1,17 +1,17 @@
 <div class="kt-portlet__body">
     <div class="form-group row">
         <div class="col-lg-6">
-            {!! Form::label('name', 'Name :') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-            @error('name')
-                <div id="name" class="error invalid-feedback"> {{ $message }}</div>
+            {!! Form::label('category_id', 'Category :') !!}
+            {!!Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => 'Select Category', 'id' => 'category_id'])!!}
+            @error('category_id'))
+            <div id="category_id" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
 
         <div class="col-lg-6">
-            {!! Form::label('category_id', 'Category :') !!}
-            {!!Form::select('category_id', $categories, null, ['class' => 'form-control', 'id' => 'category_id'])!!}
-            @error('category_id'))
+            {!! Form::label('brand_id', 'Brand :') !!}
+            {!!Form::select('brand_id', [], null, ['class' => 'form-control', 'id' => 'brand_id'])!!}
+            @error('brand_id'))
                 <div id="category_id" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
@@ -37,13 +37,23 @@
 
     <div class="form-group row">
         <div class="col-lg-6">
+            {!! Form::label('no_of_tickets', 'No of Tickets :') !!}
+            {!! Form::number('no_of_tickets', null, ['class' => 'form-control']) !!}
+            @error('no_of_tickets')
+            <div id="name" class="error invalid-feedback"> {{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-lg-6">
             {!! Form::label('date', 'Date :') !!}
             {!! Form::date('date', null, ['class' => 'form-control']) !!}
             @error('date')
             <div id="name" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
+    </div>
 
+    <div class="form-group row">
         <div class="col-lg-6">
             {!! Form::label('departure_time', 'Departure Time :') !!}
             {!! Form::time('departure_time', null, ['class' => 'form-control']) !!}
@@ -51,9 +61,7 @@
             <div id="name" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
-    </div>
 
-    <div class="form-group row">
         <div class="col-lg-6">
             {!! Form::label('arrival_time', 'Arrival Time :') !!}
             {!! Form::time('arrival_time', null, ['class' => 'form-control']) !!}
@@ -61,17 +69,17 @@
             <div id="name" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
-
-        <div class="col-lg-6">
-            {!! Form::label('price', 'Price :') !!}
-            {!!Form::number('price', null, ['class' =>  'form-control', 'id' => 'price'])!!}
-            @error('price'))
-            <div id="category_id" class="error invalid-feedback"> {{ $message }}</div>
-            @enderror
-        </div>
     </div>
 
     <div class="form-group row">
+        <div class="col-lg-6">
+            {!! Form::label('price', 'Price :') !!}
+            {!!Form::number('price', null, ['class' =>  'form-control', 'id' => 'price'])!!}
+            @error('price')
+            <div id="category_id" class="error invalid-feedback"> {{ $message }}</div>
+            @enderror
+        </div>
+
         <div class="col-lg-6">
             {!! Form::label('commission', 'Commision :') !!}
             {!! Form::number('commission', null, ['class' => 'form-control']) !!}
@@ -79,7 +87,8 @@
             <div id="name" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
-
+    </div>
+    <div class="form-group row">
         <div class="col-lg-6">
             {!! Form::label('status', 'Status :') !!}
             <br>
@@ -114,7 +123,46 @@
                     placeholder: "Select Category",
                     allowClear: true
                 });
+
+                $('#brand_id').select2({
+                    placeholder: 'Select Category First',
+                    allowClear: true,
+                });
+
+                $('#category_id').change(function () {
+                    var categoryId = $(this).val();
+                    getBrandByCategory(categoryId);
+                });
             });
+
+            function getBrandByCategory(categoryId, defaultSelected = null) {
+                var brands = $('#brand_id').select2({
+                    placeholder: 'Select Brand',
+                    allowClear: true,
+                    ajax: {
+                        url: "/api/category/" + categoryId + '/brands',
+                        'dataType': 'json',
+                        processResults: function (data) {
+                            return {
+                                results: $.map(data, function (obj) {
+                                    return {
+                                        id: obj.id,
+                                        text: obj.text
+                                    };
+                                })
+                            }
+                        }
+                    },
+                }).val(defaultSelected).trigger('change');
+
+                if (defaultSelected) {
+                    _.each(defaultSelected, function (data) {
+                        var option = new Option(data.text, data.id, true, true);
+                        brands.append(option);
+                    })
+                    brands.trigger('change');
+                }
+            }
         </script>
 
     @endpush

@@ -4,18 +4,19 @@
 namespace App\Services\Admin\Cms;
 
 
-use App\Models\Cms\Section;
+use App\Models\Cms\Media;
 use App\Services\General\BaseService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 
-class SectionService extends BaseService
+class MediaService extends BaseService
 {
     private DataTables $dataTables;
 
     /**
-     * SectionService constructor.
+     * MediaService constructor.
      * @param DataTables $dataTables
      */
     public function __construct(
@@ -28,7 +29,7 @@ class SectionService extends BaseService
 
     public function model()
     {
-        return Section::class;
+        return Media::class;
     }
 
     /**
@@ -40,21 +41,20 @@ class SectionService extends BaseService
         $query = $this->datatableQuery();
 
         return $this->dataTables->of($query)
-            ->editColumn('page_title', function($q) {
-                $otherLinks = '<a class="mr-1 pr-2" href="'. route("admin.page.media.create", $q) .'"> <i class="la la-camera la-lg"></i></a>';
-                return $q->page_title . ' '. $otherLinks ;
+            ->editColumn('media', function($query) {
+                return '<img src="'. Storage::url($query->media) .'" height="48px" width="60px"/>';
             })
             ->addColumn('action', function ($q) {
                 $params = [
-                    'route' => 'admin.page.section',
+                    'route' => 'admin.page.media',
                     'id' => $q->id,
-                    'edit' => true,
+                    'edit' => false,
                     'delete' => true
                 ];
 
                 return view('admin.datatable.action', compact('params'));
             })
-            ->rawColumns(['page_title', 'action'])
+            ->rawColumns(['media', 'action'])
             ->addIndexColumn()
             ->make(true);
     }
@@ -63,6 +63,10 @@ class SectionService extends BaseService
      * @return Collection|Model[]
      */
     public function datatableQuery() {
-        return $this->query()->with('page')->select('sections.*');
+        $query = $this->query();
+        if($sectionId = request()->input('sectionId')) {
+            $query = $query->where('section_id', $sectionId);
+        }
+        return $query;
     }
 }

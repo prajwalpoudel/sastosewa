@@ -4,8 +4,8 @@ use App\Constants\General;
 
 function getMediaTypes() {
     return [
-        General::IMAGE,
-        General::VIDEO,
+        General::IMAGE => General::IMAGE,
+        General::VIDEO => General::VIDEO ,
     ];
 }
 
@@ -16,3 +16,22 @@ function getNullSelectOption($selectOption, $value = 'Null') {
 
     return $selectOption;
 }
+
+function getActiveNavClass($route) {
+    $currentRoute = request()->route()->getName();
+    if(is_array($route)) {
+        if(in_array($currentRoute, $route)) {
+            return 'active-nav-link';
+        }
+    }
+    else {
+        if($currentRoute == $route) {
+            return 'active-nav-link';
+        }
+    }
+
+    return null;
+
+}
+
+

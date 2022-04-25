@@ -31,4 +31,12 @@ class Ticket extends Model
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * @return BelongsTo
+     */
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
 }
