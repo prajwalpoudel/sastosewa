@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('section_id');
+            $table->string('type');
+            $table->longText('media');
             $table->timestamps();
+
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
         });
     }
 

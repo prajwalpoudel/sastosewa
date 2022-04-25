@@ -28,8 +28,11 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Category</th>
-                    <th>Total Price</th>
                     <th>Date</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>No. of tickets</th>
+                    <th>Total Price</th>
                     <th>Status</th>
                     <th style="text-align: center">Actions</th>
                 </tr>
@@ -54,10 +57,13 @@
             order: [[1, 'asc']],
             columns: [
                 {data: 'DT_RowIndex', searchable: false, orderable: false, width: '5%'},
-                {data: 'name', name: 'name'},
+                {data: 'brand.name', name: 'brand.name'},
                 {data: 'category.name', name: 'category.name'},
-                {data: 'price', name: 'price'},
                 {data: 'date', name: 'date'},
+                {data: 'departure_time', name: 'departure_time'},
+                {data: 'arrival_time', name: 'arrival_time'},
+                {data: 'price', name: 'price'},
+                {data: 'price', name: 'price'},
                 {data: 'status', name: 'status'},
                 {data: 'action', 'name': 'action', searchable: false, orderable: false, className: 'dt-body-center'}
             ],

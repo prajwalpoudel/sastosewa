@@ -8,12 +8,14 @@
         "php": "^8.0.2",
         "cviebrock/eloquent-sluggable": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
+        "jorenvanhocht/laravel-share": "^4.2",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "laravelcollective/html": "^6.3",
         "prajwal/metronics": "^1.0",
+        "spatie/laravel-medialibrary": "^9.0.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

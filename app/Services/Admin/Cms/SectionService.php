@@ -41,7 +41,7 @@ class SectionService extends BaseService
 
         return $this->dataTables->of($query)
             ->editColumn('page_title', function($q) {
-                $otherLinks = '<a class="mr-1 pr-2" href="'. route("admin.page.media.create", ['sectionId' => $q->id]) .'"> <i class="la la-camera la-lg"></i></a>';
+                $otherLinks = '<a class="mr-1 pr-2" href="'. route("admin.page.media.create", $q) .'"> <i class="la la-camera la-lg"></i></a>';
                 return $q->page_title . ' '. $otherLinks ;
             })
             ->addColumn('action', function ($q) {
@@ -63,6 +63,6 @@ class SectionService extends BaseService
      * @return Collection|Model[]
      */
     public function datatableQuery() {
-        return $this->query()->with('page');
+        return $this->query()->with('page')->select('sections.*');
     }
 }

@@ -6,6 +6,7 @@ namespace App\Services\Admin\Ticket;
 
 use App\Models\Ticket\Ticket;
 use App\Services\General\BaseService;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Yajra\DataTables\DataTables;
@@ -64,6 +65,13 @@ class TicketService extends BaseService
      * @return Collection|Model[]
      */
     public function datatableQuery() {
-        return $this->query()->with('category');
+        return $this->query()->with(['category', 'brand'])->select('tickets.*');
+    }
+
+    public function upcomingTickets() {
+        return $this->model->whereDate('date', '>=', Carbon::now())
+                            ->where('status', true)
+                            ->whereTime('departure_time', '>', Carbon::now()->addHour()->toTimeString())
+                            ->get();
     }
 }

@@ -122,9 +122,24 @@ class MenuTableSeeder extends Seeder
                     ],
                     [
 
-                        "title" => "Ticket",
+                        "title" => "Brand",
                         "class" => "nav-item",
                         "order" => 2,
+                        "icon" => "fa fa-envelope",
+                        "status" => true,
+                        "route" => "admin.ticket.brand.index",
+                        "group_id" => MenuGroupConstant::ADMIN_ID,
+                        "related_routes" => [
+                            'admin.ticket.brand.index',
+                            'admin.ticket.brand.create',
+                            'admin.ticket.brand.edit',
+                        ],
+                    ],
+                    [
+
+                        "title" => "Ticket",
+                        "class" => "nav-item",
+                        "order" => 3,
                         "icon" => "fa fa-envelope",
                         "status" => true,
                         "route" => "admin.ticket.index",
@@ -140,6 +155,9 @@ class MenuTableSeeder extends Seeder
                     'admin.ticket.category.index',
                     'admin.ticket.category.create',
                     'admin.ticket.category.edit',
+                    'admin.ticket.brand.index',
+                    'admin.ticket.brand.create',
+                    'admin.ticket.brand.edit',
                     'admin.ticket.index',
                     'admin.ticket.create',
                     'admin.ticket.edit',
@@ -208,6 +226,22 @@ class MenuTableSeeder extends Seeder
                 "related_routes" => [
                     'admin.message.index',
                     'admin.message.show',
+                ],
+            ],
+            [
+                "title" => "Testimonials",
+                "class" => "nav-item",
+                "order" => 5,
+                "icon" => "fa fa-cogs",
+                "status" => true,
+                "route" => "admin.testimonial.index",
+                "group_id" => MenuGroupConstant::ADMIN_ID,
+                "children" => [
+
+                ],
+                "related_routes" => [
+                    'admin.testimonial.index',
+                    'admin.testimonial.edit',
                 ],
             ],
             [
