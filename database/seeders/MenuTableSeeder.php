@@ -229,6 +229,22 @@ class MenuTableSeeder extends Seeder
                 ],
             ],
             [
+                "title" => "Testimonials",
+                "class" => "nav-item",
+                "order" => 5,
+                "icon" => "fa fa-cogs",
+                "status" => true,
+                "route" => "admin.testimonial.index",
+                "group_id" => MenuGroupConstant::ADMIN_ID,
+                "children" => [
+
+                ],
+                "related_routes" => [
+                    'admin.testimonial.index',
+                    'admin.testimonial.edit',
+                ],
+            ],
+            [
                 "title" => "Settings",
                 "class" => "nav-item",
                 "order" => 5,

@@ -25,5 +25,7 @@ Route::group([ 'namespace' => 'Tour' ], function() {
 });
 Route::resource('message', 'MessageController')->only(['index', 'show']);
 Route::resource('setting', 'SettingController');
+Route::resource('testimonial', 'TestimonialController');
+
 
 
