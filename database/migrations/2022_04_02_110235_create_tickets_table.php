@@ -19,6 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->timestamp('date')->nullable();
             $table->boolean('status')->default(false);
+            $table->string('from')->nullable();
+            $table->string('to')->nullable();
             $table->float('price')->nullable();
             $table->float('no_of_tickets')->nullable();
             $table->float('commission')->nullable();

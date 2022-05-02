@@ -21,7 +21,21 @@ class TicketController extends Controller
     }
 
     public function index() {
-        $tickets = collect([]);
+        $tickets = $this->ticketService->upcomingTickets();
         return view($this->view.'index', compact('tickets'));
+    }
+
+    public function search(Request $request) {
+        $tickets = $this->ticketService->query()->where('from', $request->input('origin'))
+                        ->orWhere('to', $request->input('destination'))
+                        ->orWhere('date', $request->input('departure_date'))->get();
+
+        return view($this->view.'index', compact('tickets'));
+    }
+
+    public function book($id, Request $request) {
+        $ticket = $this->ticketService->findOrFail($id);
+
+        return view($this->view.'book', compact('ticket'));
     }
 }

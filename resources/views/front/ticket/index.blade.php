@@ -21,8 +21,8 @@
                         <p class="pt-1">Yeti Airlines</p>
                     </div>
                     <div class="departure-section text-right flex flex-col justify-between pl-40 py-4">
-                        <h3 class="text-rose-700 font-semibold">Biratnagar(BIR)</h3>
-                        <h6 class="ticket-time">20:30</h6>
+                        <h3 class="text-rose-700 font-semibold">{{ $ticket->from }}</h3>
+                        <h6 class="ticket-time">{{ $ticket->departure_time }}</h6>
                         <h6 class="ticket-date">Tue, Apr 24, 2022</h6>
                     </div>
                     <div class="flex flex-col justify-between py-4">
@@ -35,14 +35,14 @@
                         </div>
                     </div>
                     <div class="arrival-section text-left flex flex-col justify-between pr-40 py-4">
-                        <h3 class="text-rose-700 font-semibold">Kathmandu(KTM)</h3>
-                        <h6 class="ticket-time">20:30</h6>
-                        <h6 class="ticket-date">Tue, Apr 24, 2022</h6>
+                        <h3 class="text-rose-700 font-semibold">{{ $ticket->to }}</h3>
+                        <h6 class="ticket-time">{{ $ticket->arrival_time }}</h6>
+                        <h6 class="ticket-date">{{ \Carbon\Carbon::parse($ticket->date)->format('d') }}</h6>
                     </div>
                     <div class="flex flex-col justify-between text-center py-4">
                         <h6 class="ticket-price">NPR 3300</h6>
                         <div class="button-div">
-                            <button class="button bg-rose-700">Book Now</button>
+                            <a href="{{ route('front.ticket.book', ['id' => $ticket->id, 'no_of_travellers' => request()->input('no_of_travellers'), 'nationality' => request()->input('nationality')]) }}" class="button bg-rose-700 w-full">Book Now</a>
                         </div>
                         <p class="ticket-type">Non refundable</p>
                     </div>

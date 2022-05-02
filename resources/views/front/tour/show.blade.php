@@ -1,5 +1,11 @@
 @extends('front.layouts.app')
 
+@section('social-share')
+    <meta property="og:title" content="{{ $tour->name }}" />
+    <meta property="og:type" content="{{ $tour->category }}" />
+    <meta property="og:url" content="{{ route('front.tour.show', $tour->id) }}" />
+    <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+@endsection
 @section('content')
     <section id="tour-section">
         <div class="banner w-full h-72 bg-gray-100">
@@ -17,10 +23,10 @@
                     <div class="card my-4">
                         <ul class="flex text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                             <li class="mr-2">
-                                <button class="inline-block p-4 rounded-t-lg border-b-2" id="overview-tab" data-tabs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="false">Overview</button>
+                                <button class="inline-block p-4 rounded-t-lg border-b-2" id="description-tab" data-tabs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="false">Description</button>
                             </li>
                             <li class="mr-2">
-                                <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
+                                <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="itinerary-tab" data-tabs-target="#itinerary" type="button" role="tab" aria-controls="itinerary" aria-selected="false">Itinerary</button>
                             </li>
                             <li class="mr-2">
                                 <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
@@ -30,11 +36,11 @@
                             </li>
                         </ul>
                         <div id="myTabContent">
-                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="description" role="tabpanel" aria-labelledby="description-tab">
                                 <p class="text-sm text-gray-500 dark:text-gray-400"> {!! $tour->description !!}</p>
                             </div>
-                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="itinerary" role="tabpanel" aria-labelledby="itinerary-tab">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">{!! $tour->itinerary !!}</p>
                             </div>
                             <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                                 <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
@@ -80,7 +86,9 @@
                             </div>
                             <div class="px-4 py-4">
                                 <div class="flex space-x-4 justify-center">
-                                    <i class="fa-brands fa-facebook"></i>
+                                    <a href="{{ Share::currentPage()->facebook()->getRawLinks() }}" class="social-button ">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
                                     <i class="fa-brands fa-instagram"></i>
                                     <i class="fa-brands fa-twitter"></i>
                                 </div>
