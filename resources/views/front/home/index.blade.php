@@ -290,9 +290,9 @@
 @endsection
 
 @push('script')
-    <script>
-        $('.banner').hover(function () {
-            $('#default-carousel').attr('data-carousel', 'static');
-        });
-    </script>
+{{--    <script>--}}
+{{--        $('.banner').hover(function () {--}}
+{{--            $('#default-carousel').attr('data-carousel', 'static');--}}
+{{--        });--}}
+{{--    </script>--}}
 @endpush
