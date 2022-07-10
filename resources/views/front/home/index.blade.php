@@ -44,7 +44,7 @@
 @endpush
 @section('content')
     <section id="tickets-section">
-        <div class="banner w-full h-72 bg-gray-100 relative">
+        <div class="banner w-full h-72 bg-gray-100 relative z-0">
             <div id="default-carousel" class="relative" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="overflow-hidden relative h-72">
@@ -60,48 +60,10 @@
                                 <video class="w-full h-72 object-cover banner-image"
                                        src="{{ \Illuminate\Support\Facades\Storage::url($media['media']) }}"></video>
                             @endif
-                            <div class="search absolute inset-y-4 left-8">
+                            <div class="hidden md:block search absolute inset-y-4 left-8">
                                 <div class="text-white tracking-wider">
                                     <p class="text-4xl font-bold uppercase">{{ $sections['home_banner']['title'] ?? null }}</p>
                                     <p class="text-2xl font-medium capitalize my-4">{{ $sections['home_banner']['description'] ?? null }}</p>
-                                </div>
-                                <div class="flex gap-2 font-semibold">
-                                    <div>
-                                        <label class="block ticket-input-label">
-                                            <span class="block text-normal">Origin</span>
-                                        </label>
-                                        <input type="text" placeholder="Email" class="text-input"/>
-                                    </div>
-                                    <div>
-                                        <label class="block ticket-input-label">
-                                            <span class="block text-normal">Destination</span>
-                                        </label>
-                                        <input type="text" placeholder="Email" class="text-input"/>
-                                    </div>
-                                    <div>
-                                        <label class="block ticket-input-label">
-                                            <span class="block text-normal">Departure Date</span>
-                                        </label>
-                                        <input type="text" placeholder="Email" class="text-input"/>
-                                    </div>
-                                    <div>
-                                        <label class="block ticket-input-label">
-                                            <span class="block text-normal">No. of Travellers</span>
-                                        </label>
-                                        <input type="text" placeholder="Email" class="text-input"/>
-                                    </div>
-                                    <div>
-                                        <label class="block ticket-input-label">
-                                            <span class="block text-normal">Nationality</span>
-                                        </label>
-                                        <input type="text" placeholder="Email" class="text-input"/>
-                                    </div>
-                                    <div class="ticket-search-div">
-                                        <button class="ticket-search-button bg-rose-700">
-                                            <i class="fa fa-search px-2"> </i>
-                                            Search
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -117,15 +79,55 @@
                 </div>
             </div>
         </div>
+
+        <div class="hidden md:block md:flex md:gap-2 font-semibold relative z-10 bottom-44 left-8">
+            <div>
+                <label class="block ticket-input-label">
+                    <span class="block text-normal">Origin</span>
+                </label>
+                <input type="text" placeholder="Email" class="text-input"/>
+            </div>
+            <div>
+                <label class="block ticket-input-label">
+                    <span class="block text-normal">Destination</span>
+                </label>
+                <input type="text" placeholder="Email" class="text-input"/>
+            </div>
+            <div>
+                <label class="block ticket-input-label">
+                    <span class="block text-normal">Departure Date</span>
+                </label>
+                <input type="text" placeholder="Email" class="text-input"/>
+            </div>
+            <div>
+                <label class="block ticket-input-label">
+                    <span class="block text-normal">No. of Travellers</span>
+                </label>
+                <input type="text" placeholder="Email" class="text-input"/>
+            </div>
+            <div>
+                <label class="block ticket-input-label">
+                    <span class="block text-normal">Nationality</span>
+                </label>
+                <input type="text" placeholder="Email" class="text-input"/>
+            </div>
+            <div class="ticket-search-div">
+                <button class="ticket-search-button bg-rose-700">
+                    <i class="fa fa-search px-2"> </i>
+                    Search
+                </button>
+            </div>
+        </div>
+
         <div class="content-container my-2">
             <div class="first_section">
-                <div class="grid grid-cols-3 gap-8">
-                    <div class="col-span-2">
+                <div class="grid md:grid-cols-3 md:gap-8">
+                    <div class="md:col-span-2">
                         <div class="text-title text-capitalize font-medium">
                             <p>{{ $sections['home_about']['title'] ?? null }}</p>
                         </div>
                         <div class="about-content my-2">
-                            <p>{{ $sections['home_about']['description'] ?? null }}
+                            <p>{{ \Illuminate\Support\Str::limit($sections['home_about']['description'], 600) ?? null }}
                             </p>
                         </div>
                         <div class="button-div py-4">
@@ -136,7 +138,7 @@
                         <div class="text-title font-medium text-center">
                             <p>Our Services</p>
                         </div>
-                        <div class="card my-2">
+                        <div class="card my-2 text-center md:text-left">
                             <div class="divide-y-2">
                                 <div class="px-4 py-4 text-lg">
                                     <a class="text-rose-700 hover:text-primary"
@@ -170,7 +172,7 @@
                     <div class="text-title text-capitalize text-center my-2 font-bold">
                         <p>Popular Tours</p>
                     </div>
-                    <div class="grid grid-cols-3 gap-1">
+                    <div class="grid md:grid-cols-3 gap-1">
                         @foreach($tours as $tour)
                             <div class="card group m-4 p-4 text-black">
                                 <img class="object-cover h-60 w-full" src="{{ asset('images/mt-everest.jpg') }}" alt="">
@@ -178,7 +180,7 @@
                                     <a href="{{ route('front.tour.show', $tour->id) }}">{{ $tour->name }}</a>
                                 </div>
                                 <p>
-                                    {!! Str::limit($tour->description, 400) !!}
+                                    {!! Str::limit($tour->description, 200) !!}
                                 </p>
                                 <div class="button-div">
                                     <a href="{{ route('front.tour.show', $tour->id) }}"
@@ -210,10 +212,10 @@
                                                     class="rounded-full h-32 w-32"
                                                     alt="">
                                             </div>
-                                            <div class="client-content px-60 font-medium">
+                                            <div class="client-content px-12 md:px-60 font-medium">
                                                 <p>{!! $testimonial->description !!}</p>
                                             </div>
-                                            <div class="client-intro px-60 my-12 ">
+                                            <div class="client-intro px-12 md:px-60 my-12 ">
                                                 <p class="font-bold text-2xl text-center">{{ $testimonial->name }}</p>
                                                 <p>{{ $testimonial->position .', '. $testimonial->company }}</p>
                                             </div>

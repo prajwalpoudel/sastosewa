@@ -53,7 +53,7 @@
 }
 
 .content-container {
-    @apply mx-36;
+    @apply mx-8 md:mx-36;
 }
 
 .dropdown-menu {
