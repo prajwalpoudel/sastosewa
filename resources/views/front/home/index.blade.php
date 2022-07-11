@@ -77,47 +77,49 @@
                                 data-carousel-slide-to="{{ $key }}"></button>
                     @endforeach
                 </div>
+
+                <div class="hidden md:block md:flex md:gap-2 font-semibold absolute z-30 top-28 left-8">
+                    <div>
+                        <label class="block ticket-input-label">
+                            <span class="block text-normal">Origin</span>
+                        </label>
+                        <input type="text" placeholder="Email" class="text-input"/>
+                    </div>
+                    <div>
+                        <label class="block ticket-input-label">
+                            <span class="block text-normal">Destination</span>
+                        </label>
+                        <input type="text" placeholder="Email" class="text-input"/>
+                    </div>
+                    <div>
+                        <label class="block ticket-input-label">
+                            <span class="block text-normal">Departure Date</span>
+                        </label>
+                        <input type="text" placeholder="Email" class="text-input"/>
+                    </div>
+                    <div>
+                        <label class="block ticket-input-label">
+                            <span class="block text-normal">No. of Travellers</span>
+                        </label>
+                        <input type="text" placeholder="Email" class="text-input"/>
+                    </div>
+                    <div>
+                        <label class="block ticket-input-label">
+                            <span class="block text-normal">Nationality</span>
+                        </label>
+                        <input type="text" placeholder="Email" class="text-input"/>
+                    </div>
+                    <div class="ticket-search-div">
+                        <button class="ticket-search-button bg-rose-700">
+                            <i class="fa fa-search px-2"> </i>
+                            Search
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="hidden md:block md:flex md:gap-2 font-semibold relative z-10 bottom-44 left-8">
-            <div>
-                <label class="block ticket-input-label">
-                    <span class="block text-normal">Origin</span>
-                </label>
-                <input type="text" placeholder="Email" class="text-input"/>
-            </div>
-            <div>
-                <label class="block ticket-input-label">
-                    <span class="block text-normal">Destination</span>
-                </label>
-                <input type="text" placeholder="Email" class="text-input"/>
-            </div>
-            <div>
-                <label class="block ticket-input-label">
-                    <span class="block text-normal">Departure Date</span>
-                </label>
-                <input type="text" placeholder="Email" class="text-input"/>
-            </div>
-            <div>
-                <label class="block ticket-input-label">
-                    <span class="block text-normal">No. of Travellers</span>
-                </label>
-                <input type="text" placeholder="Email" class="text-input"/>
-            </div>
-            <div>
-                <label class="block ticket-input-label">
-                    <span class="block text-normal">Nationality</span>
-                </label>
-                <input type="text" placeholder="Email" class="text-input"/>
-            </div>
-            <div class="ticket-search-div">
-                <button class="ticket-search-button bg-rose-700">
-                    <i class="fa fa-search px-2"> </i>
-                    Search
-                </button>
-            </div>
-        </div>
 
         <div class="content-container my-2">
             <div class="first_section">
