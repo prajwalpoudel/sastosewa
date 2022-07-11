@@ -2,7 +2,7 @@
     <div class="nav-logo">
         <p>Logo Here</p>
     </div>
-    <div class="">
+    <div class="hidden md:block">
         <ul class="flex">
             <li class="nav-link {{ getActiveNavClass('front.index') }}">
                 <a class="py-4" href="{{ route('front.index') }}">

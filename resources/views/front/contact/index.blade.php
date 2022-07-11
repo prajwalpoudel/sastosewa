@@ -6,7 +6,7 @@
             <img class="w-full h-72 object-cover" src="{{ asset('images/boat.jpg') }}" alt="">
         </div>
         <div class="content-container">
-            <div class="grid grid-cols-2 gap-16 my-4">
+            <div class="md:grid md:grid-cols-2 md:gap-16 my-4">
                 <div class="contact-form">
                     <p class="text-xl text-zinc-800 font-medium">Contact Form</p>
                     <div class="grid my-4">

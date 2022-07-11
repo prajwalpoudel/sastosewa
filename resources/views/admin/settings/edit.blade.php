@@ -1,4 +1,5 @@
 @extends('metronics.layouts.master')
+@section('content')
     <section id="settings-edit">
         <div class="kt-portlet">
             <div class="kt-portlet__head">
@@ -13,5 +14,4 @@
             {!! Form::close() !!}
         </div>
     </section>
-@section('content')
 @endsection
