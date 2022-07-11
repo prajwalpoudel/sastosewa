@@ -75,7 +75,10 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $setting = $this->settingService->findOrFail($id);
+
+        return view('admin.settings.edit', compact('setting'));
+
     }
 
     /**

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('route')->nullable();
             $table->longText('description')->nullable();
             $table->longText('equipment')->nullable();
-            $table->longText('itenary')->nullable();
+            $table->longText('itinerary')->nullable();
             $table->longText('price_inclusive')->nullable();
             $table->longText('price_exclusive')->nullable();
             $table->timestamp('date')->nullable();

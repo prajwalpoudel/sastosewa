@@ -74,6 +74,16 @@
 
         <div class="form-group row">
             <div class="col-lg-12">
+                {!! Form::label('itinerary', 'Itinerary :') !!}
+                {!! Form::textarea('itinerary', null, ['class' => 'form-control']) !!}
+                @error('itinerary')
+                <div id="name" class="error invalid-feedback"> {{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-lg-12">
                 {!! Form::label('equipment', 'Equipments :') !!}
                 {!! Form::textarea('equipment', null, ['class' => 'form-control']) !!}
                 @error('equipment')

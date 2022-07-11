@@ -28,6 +28,11 @@ class TourController extends Controller
     }
 
     public function show(Tour $tour) {
-        return view($this->view.'show', compact('tour'));
+        $similarTours = $this->tourService->where([
+            ['category_id', '=', $tour->category_id],
+            ['status', '=', true],
+            ['id', '!=', $tour->id]
+            ])->limit(4)->get();
+        return view($this->view.'show', compact('tour', 'similarTours'));
     }
 }
