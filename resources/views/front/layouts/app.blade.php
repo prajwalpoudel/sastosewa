@@ -27,5 +27,35 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/share.js') }}"></script>
     @stack('script')
+    <script>
+        let flashMessages = @json(session('flash_notification', []));
+        console.log(flashMessages);
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "1000",
+            "hideDuration": "1000",
+            "timeOut": "8000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        flashMessages.forEach(function (message) {
+            if (message.level == 'success') {
+                toastr.success(message.message, message.title)
+            } else if(message.level == 'error') {
+                toastr.error(message.message, message.title)
+            } else if(message.level == 'warning') {
+                toastr.warning(message.message, message.title)
+            } else if(message.level == 'danger') {
+                toastr.danger(message.message, message.title)
+            }
+        });
+    </script>
 </body>
 </html>
