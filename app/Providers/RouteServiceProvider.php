@@ -17,12 +17,17 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * @var string
      */
     protected $frontNamespace = 'App\Http\Controllers\Front';
+
+    /**
+     * @var string
+     */
+    protected $authNamespace = 'App\Http\Controllers\Auth';
 
     /**
      * @var string
@@ -51,6 +56,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('web')
                 ->namespace($this->frontNamespace)
                 ->group(base_path('routes/front/front.php'));
+
+            Route::name('auth.')
+                ->middleware('web')
+                ->namespace($this->authNamespace)
+                ->group(base_path('routes/auth.php'));
 
             Route::prefix('admin')
                 ->name('admin.')

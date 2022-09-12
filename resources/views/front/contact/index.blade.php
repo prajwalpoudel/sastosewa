@@ -10,34 +10,49 @@
                 <div class="contact-form">
                     <p class="text-xl text-zinc-800 font-medium">Contact Form</p>
                     <div class="grid my-4">
-                        <div class="mb-2">
-                            <label class="block">
-                                <span class="block text-normal">Full Name</span>
-                            </label>
-                            <input type="text" placeholder="Full Name" class="text-input"/>
-                        </div>
-                        <div class="mb-2">
-                            <label class="block">
-                                <span class="block text-normal">Email</span>
-                            </label>
-                            <input type="text" placeholder="Email" class="text-input"/>
-                        </div>
-                        <div class="mb-2">
-                            <label class="block">
-                                <span class="block text-normal">Phone</span>
-                            </label>
-                            <input type="text" placeholder="Phone" class="text-input"/>
-                        </div>
-                        <div class="mb-2">
-                            <label class="block">
-                                <span class="block text-normal">Message</span>
-                            </label>
-                            <textarea placeholder="Your message" class="text-input resize-none"> </textarea>
-                        </div>
+                        <form action="{{ route('front.contact.store') }}" method="post" id="contact-form">
+                            @csrf
+                            <div class="mb-2">
+                                <label class="block">
+                                    <span class="{{ $errors->first('name') ? 'error-label block text-normal' : 'block text-normal'}}">Full Name</span>
+                                </label>
+                                <input type="text" value="{{ old('name') ?? null }}" placeholder="Full Name" name="name" class="{{ $errors->first('name') ? 'error-input' : 'text-input'}}"/>
+                                @error('name')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label class="block">
+                                    <span class="{{ $errors->first('email') ? 'error-label block text-normal' : 'block text-normal'}}">Email</span>
+                                </label>
+                                <input type="text" value="{{ old('email') ?? null }}" placeholder="Email" name="email" class="{{ $errors->first('email') ? 'error-input' : 'text-input'}}"/>
+                                @error('email')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label class="block">
+                                    <span class="{{ $errors->first('phone') ? 'error-label block text-normal' : 'block text-normal'}}">Phone</span>
+                                </label>
+                                <input type="text" value="{{ old('phone') ?? null }}" placeholder="Phone" name="phone" class="{{ $errors->first('phone') ? 'error-input' : 'text-input'}}"/>
+                                @error('phone')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label class="block">
+                                    <span class="{{ $errors->first('message') ? 'error-label block text-normal' : 'block text-normal'}}">Message</span>
+                                </label>
+                                <textarea placeholder="Your message" name="message" class="{{ $errors->first('message') ? 'error-input resize-none' : 'text-input resize-none'}}"> {{ old('message') ?? null }} </textarea>
+                                @error('message')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
+                                @enderror
+                            </div>
 
-                        <div class="my-2 read-more-button">
-                            <button class="">Submit</button>
-                        </div>
+                            <div class="cursor-pointer my-2 read-more-button" id="contact-div">
+                                <button id="contact-submit-button" type="submit">Submit</button>
+                            </div>
+                        </form>
 
                     </div>
                 </div>
@@ -87,3 +102,11 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+    <script>
+            $("#contact-div").click(function () {
+                $("#contact-form").submit();
+            });
+    </script>
+@endpush

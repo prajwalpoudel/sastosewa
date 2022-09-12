@@ -213,6 +213,71 @@ class MenuTableSeeder extends Seeder
                 ],
             ],
             [
+                "title" => "Taxi",
+                "class" => "nav-item",
+                "order" => 4,
+                "icon" => "fa fa-envelope",
+                "status" => true,
+                "route" => "admin.taxi.index",
+                "group_id" => MenuGroupConstant::ADMIN_ID,
+                "children" => [
+                    [
+
+                        "title" => "Taxi",
+                        "class" => "nav-item",
+                        "order" => 1,
+                        "icon" => "fa fa-envelope",
+                        "status" => true,
+                        "route" => "admin.taxi.index",
+                        "group_id" => MenuGroupConstant::ADMIN_ID,
+                        "related_routes" => [
+                            'admin.taxi.index',
+                            'admin.taxi.create',
+                            'admin.taxi.edit',
+                        ],
+                    ],
+                    [
+
+                        "title" => "Detail",
+                        "class" => "nav-item",
+                        "order" => 2,
+                        "icon" => "fa fa-envelope",
+                        "status" => true,
+                        "route" => "admin.taxi-detail.index",
+                        "group_id" => MenuGroupConstant::ADMIN_ID,
+                        "related_routes" => [
+                            'admin.taxi-detail.index',
+                            'admin.taxi-detail.create',
+                            'admin.taxi-detail.edit',
+                        ],
+                    ],
+                    [
+
+                        "title" => "Bookings",
+                        "class" => "nav-item",
+                        "order" => 2,
+                        "icon" => "fa fa-envelope",
+                        "status" => true,
+                        "route" => "admin.taxi-booking.index",
+                        "group_id" => MenuGroupConstant::ADMIN_ID,
+                        "related_routes" => [
+                            'admin.taxi-booking.index',
+                            'admin.taxi-booking.show',
+                        ],
+                    ],
+                ],
+                "related_routes" => [
+                    'admin.taxi.index',
+                    'admin.taxi.create',
+                    'admin.taxi.edit',
+                    'admin.taxi-detail.index',
+                    'admin.taxi-detail.create',
+                    'admin.taxi-detail.edit',
+                    'admin.taxi-booking.index',
+                    'admin.taxi-booking.show',
+                ],
+            ],
+            [
                 "title" => "Messages",
                 "class" => "nav-item",
                 "order" => 4,

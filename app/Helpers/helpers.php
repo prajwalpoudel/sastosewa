@@ -34,4 +34,13 @@ function getActiveNavClass($route) {
 
 }
 
+function getAuthenticatedUser($guard='front', $attribute=null) {
+    if(Auth::guard($guard)->check()) {
+        $user = Auth::guard($guard)->user();
+        if($attribute) {
+            return $user->{$attribute};
+        }
+        return $user;
+    }
+}
 
