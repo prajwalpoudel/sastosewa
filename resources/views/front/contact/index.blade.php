@@ -16,36 +16,36 @@
                                 <label class="block">
                                     <span class="{{ $errors->first('name') ? 'error-label block text-normal' : 'block text-normal'}}">Full Name</span>
                                 </label>
-                                <input type="text" value="{{ old('name') ?? null }}" placeholder="Full Name" name="name" class="{{ $errors->first('name') ? 'error-input text-input' : 'text-input'}}"/>
+                                <input type="text" value="{{ old('name') ?? null }}" placeholder="Full Name" name="name" class="{{ $errors->first('name') ? 'error-input' : 'text-input'}}"/>
                                 @error('name')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> {{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-2">
                                 <label class="block">
                                     <span class="{{ $errors->first('email') ? 'error-label block text-normal' : 'block text-normal'}}">Email</span>
                                 </label>
-                                <input type="text" value="{{ old('email') ?? null }}" placeholder="Email" name="email" class="{{ $errors->first('email') ? 'error-input text-input' : 'text-input'}}"/>
+                                <input type="text" value="{{ old('email') ?? null }}" placeholder="Email" name="email" class="{{ $errors->first('email') ? 'error-input' : 'text-input'}}"/>
                                 @error('email')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> {{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-2">
                                 <label class="block">
                                     <span class="{{ $errors->first('phone') ? 'error-label block text-normal' : 'block text-normal'}}">Phone</span>
                                 </label>
-                                <input type="text" value="{{ old('phone') ?? null }}" placeholder="Phone" name="phone" class="{{ $errors->first('phone') ? 'error-input text-input' : 'text-input'}}"/>
+                                <input type="text" value="{{ old('phone') ?? null }}" placeholder="Phone" name="phone" class="{{ $errors->first('phone') ? 'error-input' : 'text-input'}}"/>
                                 @error('phone')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> {{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-2">
                                 <label class="block">
                                     <span class="{{ $errors->first('message') ? 'error-label block text-normal' : 'block text-normal'}}">Message</span>
                                 </label>
-                                <textarea placeholder="Your message" name="message" class="{{ $errors->first('message') ? 'error-input text-input resize-none' : 'text-input resize-none'}}"> {{ old('message') ?? null }} </textarea>
+                                <textarea placeholder="Your message" name="message" class="{{ $errors->first('message') ? 'error-input resize-none' : 'text-input resize-none'}}"> {{ old('message') ?? null }} </textarea>
                                 @error('message')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> {{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-500"> {{ $message }}</p>
                                 @enderror
                             </div>
 

@@ -22,7 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <!--end::Base Path -->
     <meta charset="utf-8" />
-    <title>Metronic | Dashboard</title>
+    <title>Sasto Sewa | Dashboard</title>
     <meta name="description" content="Latest updates and statistic charts">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -42,6 +42,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Fonts -->
 
    @include('metronics.includes.header-link')
+    @stack('styles')
 </head>
 
 <!-- end::Head -->

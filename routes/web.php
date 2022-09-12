@@ -17,12 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/design/{slug1}/{slug2?}/{slug3?}', function($slug1, $slug2 = null, $slug3 = null) {
-    if($slug2) {
-        if($slug3) {
-            return view('design.'."$slug1.$slug2.$slug3");
-        }
-        return view('design.'."$slug1.$slug2");
-    }
-    return view('design.'.$slug1);
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
