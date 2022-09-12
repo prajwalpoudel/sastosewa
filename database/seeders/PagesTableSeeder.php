@@ -43,6 +43,9 @@ class PagesTableSeeder extends Seeder
                 'title' => PageConstant::TOURS
             ],
             [
+                'title' => PageConstant::TAXI
+            ],
+            [
                 'title' => PageConstant::DRIVING_SCHOOL
             ],
             [

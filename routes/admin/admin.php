@@ -23,6 +23,12 @@ Route::group([ 'namespace' => 'Tour' ], function() {
     });
     Route::resource('/tour', 'TourController');
 });
+Route::group([ 'namespace' => 'Taxi' ], function() {
+    Route::resource('/taxi-booking', 'BookingController')->only(['index', 'show', 'destroy']);
+    Route::resource('/taxi-detail', 'DetailController');
+    Route::resource('/taxi', 'TaxiController');
+});
+
 Route::resource('message', 'MessageController')->only(['index', 'show']);
 Route::resource('setting', 'SettingController');
 Route::resource('testimonial', 'TestimonialController');
