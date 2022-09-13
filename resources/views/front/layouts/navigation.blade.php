@@ -42,17 +42,17 @@
                 </a>
             </li>
             @if($user = Auth::guard('front')->user())
-                <li class="group nav-link {{ getActiveNavClass('front.contact.index') }} dropdown-menu">
+                <li class="group nav-link {{ getActiveNavClass(['front.profile.index', 'front.bookings.index']) }} dropdown-menu">
                     <a class="py-4" href="javascript:void(0)">
                         {{ explode(" ", $user->name)[0] }}
                         <i class="fa-solid fa-angle-down text-xs"></i>
                     </a>
                     <div class="dropdown-content">
-                        <div class="{{ getActiveNavClass('front.ticket.index') }}">
-                            <a href="{{ route('front.ticket.index') }}">Profile</a>
+                        <div class="{{ getActiveNavClass('front.profile.index') }}">
+                            <a href="{{ route('front.profile.index') }}">Profile</a>
                         </div>
-                        <div class="{{ getActiveNavClass('front.tour.index') }}">
-                            <a href="{{ route('front.tour.index') }}">Bookings</a>
+                        <div class="{{ getActiveNavClass('front.bookings.index') }}">
+                            <a href="{{ route('front.bookings.index') }}">Bookings</a>
                         </div>
                         <div>
                             <a href="{{ route('auth.logout') }}"

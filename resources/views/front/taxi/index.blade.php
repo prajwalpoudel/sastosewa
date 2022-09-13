@@ -36,7 +36,11 @@
                         <p class="text-4xl font-bold uppercase">{{ $sections['taxi_service_banner']['title'] ?? null}}</p>
                         <p class="text-2xl font-medium capitalize my-4">{{ $sections['taxi_service_banner']['description'] ?? null }}</p>
                     </div>
-                    @include('front.ticket.search-form')
+                    {!! Form::model(request()->all(), ['route' => 'front.ticket.search', 'method' => 'get', 'id' => 'search-form']) !!}
+                        <div class="flex gap-2 font-semibold">
+                            @include('front.ticket.search-form')
+                        </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
 
