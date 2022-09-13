@@ -2,10 +2,12 @@
 
 namespace App\Models\Ticket;
 
+use App\Models\Booking;
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 
 class Ticket extends Model
@@ -37,6 +39,13 @@ class Ticket extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function bookings() {
+        return $this->morphMany(Booking::class, 'bookable');
     }
 
 }

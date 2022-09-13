@@ -23,8 +23,6 @@
                             <div class="w-24 h-8 bg-rose-700 py-1">Npr {{$tour->price}}</div>
                         </div>
                     </div>
-
-
                     <div class="card my-4">
                         <ul class="flex flex-wrap md:flex-nowrap text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                             <li class="mr-2">
@@ -65,6 +63,17 @@
                             </div>
                         </div>
                     </div>
+                    {!! Form::open(['route' => ['front.tour.book', encrypt($tour->id)], 'method'=>'GET']) !!}
+                    <div class=" flex justify-start">
+                        <div>
+                            {!! Form::number('no_of_travellers', null, ['class' => $errors->first('no_of_travellers')  ? 'error-input' : 'text-input', 'placeholder' => 'No. of Travellers']) !!}
+                        </div>
+                        <button type="submit" class="text-base text-white rounded-sm bg-rose-700 px-4 ml-4 mt-1 py-1">
+                            Book Now
+                        </button>
+{{--                        <a href="{{ route('front.tour.book', encrypt($tour->id)) }}" class="">Book now</a>--}}
+                    </div>
+                    {!! Form::close() !!}
 
                 </div>
                 <div>

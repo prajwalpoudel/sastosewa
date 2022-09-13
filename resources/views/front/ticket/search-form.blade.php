@@ -1,5 +1,4 @@
-{!! Form::model(request()->all(), ['route' => 'front.ticket.search', 'method' => 'get', 'id' => 'search-form']) !!}
-    <div class="flex gap-2 font-semibold">
+
         <div>
             <label class="block ticket-input-label">
                 <span class="block text-normal">Origin</span>
@@ -36,5 +35,4 @@
                 Search
             </button>
         </div>
-    </div>
-{!! Form::close() !!}
+
