@@ -9,16 +9,16 @@
 </h2>
 <div id="accordion-collapse-body-2" class="border border-t-0 border-gray-200 hidden" aria-labelledby="accordion-collapse-heading-2">
     <div>
-        <div class="card bg-white p-4  mx-4 mb-4">
+        <div class="card bg-white p-4 mx-4 mb-4">
             <div class="grid grid-cols-5 gap-2 justify-between">
                 <div class="font-bold">
-                    <h3>Date</h3>
+                    <h3>Booking Date</h3>
                 </div>
                 <div class="font-bold">
-                    <h3>From</h3>
+                    <h3>Name</h3>
                 </div>
                 <div class="font-bold">
-                    <h3>To</h3>
+                    <h3>Code</h3>
                 </div>
                 <div class="font-bold">
                     <h3>Price</h3>
@@ -31,19 +31,19 @@
                         <p>{{ \Carbon\Carbon::parse($booking->created_at)->toFormattedDateString() }}</p>
                     </div>
                     <div>
-                        <p>{{ $booking->taxiDetail->from ?? null }}</p>
+                        <p>{{ $booking->details[0]->name ?? null }}</p>
                     </div>
                     <div>
-                        <p>{{ $booking->taxiDetail->to ?? null }}</p>
+                        <p>{{ $booking->details[0]->code ?? null }}</p>
                     </div>
                     <div>
-                        <p>{{ $booking->taxiDetail->price ?? null }}</p>
+                        <p>{{ $booking->booking_price ?? null }}</p>
                     </div>
                     <div>
-                        <h3>Action</h3>
+                        <a class="text-sm text-rose-700" href="{{ route('front.bookings.show', $booking->id) }}">View</a>
                     </div>
                 @empty
-                    <p>No Taxi Bookings Found</p>
+                    <p>No Tour Bookings Found</p>
                 @endforelse
             </div>
 
