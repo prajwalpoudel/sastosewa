@@ -13,4 +13,11 @@ Route::post('taxi-service/book', 'TaxiController@bookTaxi')->name('taxi.book.sto
 Route::get('contact-us', 'ContactController@index')->name('contact.index');
 Route::post('contact', 'ContactController@store')->name('contact.store');
 
+Route::get('profile', 'ProfileController@index')->name('profile.index');
+Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
+Route::patch('profile/{id}', 'ProfileController@update')->name('profile.update');
+
+Route::get('bookings', 'BookingController@index')->name('bookings.index');
+
+
 
