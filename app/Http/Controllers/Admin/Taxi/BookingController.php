@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin\Taxi;
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\Taxi\BookingService;
+use App\Models\Taxi\TaxiDetail;
+use App\Services\Admin\BookingService;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -12,17 +13,17 @@ class BookingController extends Controller
      * @var string
      */
     private $view = 'admin.taxi.booking.';
-    private BookingService $taxiBookingService;
+    private BookingService $bookingService;
 
     /**
      * BookingController constructor.
-     * @param BookingService $taxiBookingService
+     * @param BookingService $bookingService
      */
     public function __construct(
-        BookingService $taxiBookingService
+        BookingService $bookingService
     )
     {
-        $this->taxiBookingService = $taxiBookingService;
+        $this->bookingService = $bookingService;
     }
 
     /**
@@ -33,7 +34,7 @@ class BookingController extends Controller
     public function index(Request $request)
     {
         if ($request->wantsJson()) {
-            return $this->taxiBookingService->datatable($request);
+            return $this->bookingService->datatable($request, TaxiDetail::class);
         }
 
         return view($this->view.'index');
@@ -68,7 +69,7 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        $booking = $this->taxiBookingService->findOrFail($id)->load('taxiDetail.taxi');
+        $booking = $this->bookingService->findOrFail($id)->load(['details', 'bookable.taxi']);
         return view($this->view.'show', compact('booking'));
     }
 

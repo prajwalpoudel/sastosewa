@@ -8,72 +8,68 @@
                         <h3 class="text-right text-rose-700 font-semibold">{{ $taxi->from }}</h3>
                     </div>
                     <div class="flex justify-center">
-                        <img src="{{ asset('images/yeti-logo.png') }}"
-                             class="w-12 h-12 object-cover object-center" alt="">
+                        <h3 class="text-rose-700 font-semibold text-center">NRs {{ $taxi->price }}</h3>
                     </div>
                     <div class="to ">
                         <h3 class="text-left text-rose-700 font-semibold">{{ $taxi->to }}</h3>
                     </div>
                 </div>
-                <div class="flex justify-center py-2">
-                    <h3 class="text-rose-700 font-semibold text-center">NRs {{ $taxi->price }}</h3>
-                </div>
                 <div class="px-8 py-4">
                     <h3 class="text-rose-700 font-semibold">Booking Details</h3>
                     {!! Form::open(['route' => 'front.taxi.book.store', 'method' => 'post']) !!}
-                    {!! Form::hidden('taxi_detail_id', $taxi->id) !!}
+                    {!! Form::hidden('taxi_id', $taxi->id) !!}
                     {!! Form::hidden('user_id', getAuthenticatedUser('front', 'id')) !!}
+                    {!! Form::hidden('booking_price', $taxi->price) !!}
+                    {!! Form::hidden('price', $taxi->price ) !!}
+                    {!! Form::hidden('bookable_name', $taxi->taxi->name ) !!}
+                    {!! Form::hidden('from', $taxi->from ) !!}
+                    {!! Form::hidden('to', $taxi->to ) !!}
                     {!! Form::hidden('name', getAuthenticatedUser('front', 'name')) !!}
                     {!! Form::hidden('email', getAuthenticatedUser('front', 'email')) !!}
                     {!! Form::hidden('address', getAuthenticatedUser('front', 'address')) !!}
                     {!! Form::hidden('phone', getAuthenticatedUser('front', 'phone')) !!}
 
                     <div class="grid grid-cols-2">
-                        <div class="flex ">
-                            <p class="px-2">Name: </p>
-                            <p class="px-2">{{ getAuthenticatedUser('front', 'name') }} </p>
+                        <div class="p-2">
+                            <label class="block">
+                                <span class="block text-base">Name</span>
+                            </label>
+                            {!! Form::text('name', old('name') ?? getAuthenticatedUser('front', 'name'), ['class' => $errors->first('name')  ? 'error-input' : 'text-input', 'placeholder' => 'Name']) !!}
+                            @error('name')
+                            <p class="validation-message"><span class="font-medium"></span> {{ $message }}</p>
+                            @enderror
                         </div>
-                        <div class="flex">
-                            <p class="px-2">Email: </p>
-                            <p class="px-2">{{ getAuthenticatedUser('front', 'email') }} </p>
+
+                        <div class="p-2">
+                            <label class="block">
+                                <span class="block text-base">Email</span>
+                            </label>
+                            {!! Form::text('email', old('email') ?? getAuthenticatedUser('front', 'email'), ['class' => $errors->first('email')  ? 'error-input' : 'text-input', 'placeholder' => 'Email']) !!}
+                            @error('email')
+                            <p class="validation-message"><span class="font-medium"></span> {{ $message }}</p>
+                            @enderror
                         </div>
-                        <div class="flex">
-                            <p class="px-2">Address: </p>
-                            <p class="px-2">{{ getAuthenticatedUser('front', 'address') }} </p>
+
+                        <div class="p-2">
+                            <label class="block">
+                                <span class="block text-base">Address</span>
+                            </label>
+                            {!! Form::text('address', old('user[0][address]') ?? getAuthenticatedUser('front', 'address'), ['class' => $errors->first('address')  ? 'error-input' : 'text-input', 'placeholder' => 'Address']) !!}
+                            @error('address')
+                            <p class="validation-message"><span class="font-medium"></span> {{ $message }}</p>
+                            @enderror
                         </div>
-                        <div class="flex">
-                            <p class="px-2">Phone: </p>
-                            <p class="px-2">{{ getAuthenticatedUser('front', 'phone') }} </p>
+
+                        <div class="p-2">
+                            <label class="block">
+                                <span class="block text-base">Phone</span>
+                            </label>
+                            {!! Form::text('phone', old('phone') ?? getAuthenticatedUser('front', 'phone'), ['class' => $errors->first('phone')  ? 'error-input' : 'text-input', 'placeholder' => 'Phone']) !!}
+                            @error('phone')
+                            <p class="validation-message"><span class="font-medium"></span> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
-
-
-{{--                    <div class="grid grid-cols-2 gap-4">--}}
-{{--                        <div>--}}
-{{--                            <label class="block">--}}
-{{--                                <span class="block text-normal">Name</span>--}}
-{{--                            </label>--}}
-{{--                            {!! Form::text('name', null, ['class' => 'text-input', 'placeholder' => 'Name']) !!}--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <label class="block">--}}
-{{--                                <span class="block text-normal">Address</span>--}}
-{{--                            </label>--}}
-{{--                            {!! Form::text('address', null, ['class' => 'text-input', 'placeholder' => 'Address']) !!}--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <label class="block">--}}
-{{--                                <span class="block text-normal">Phone</span>--}}
-{{--                            </label>--}}
-{{--                            {!! Form::text('phone', null, ['class' => 'text-input', 'placeholder' => 'Phone']) !!}--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <label class="block">--}}
-{{--                                <span class="block text-normal">Email</span>--}}
-{{--                            </label>--}}
-{{--                            {!! Form::text('email', null, ['class' => 'text-input', 'placeholder' => 'Email']) !!}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                     <div class="button-div py-4">
                         <button type="submit" class="button bg-rose-700 px-8">
                             Submit
@@ -82,8 +78,6 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-
-
 
 
         </div>

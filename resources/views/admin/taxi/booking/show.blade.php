@@ -25,7 +25,7 @@
                 <div class="kt-portlet__head-label">
                     <span class="kt-portlet__head-icon">
                     </span>
-                    <h3 class="kt-portlet__head-title">Taxi Booking Detail <b>({{ $booking->taxiDetail->from }} - {{ $booking->taxiDetail->to }})  </b></h3>
+                    <h3 class="kt-portlet__head-title">Taxi Booking Detail <b>({{ $booking->details[0]->from }} - {{ $booking->details[0]->to }})  </b></h3>
                 </div>
             </div>
 
@@ -37,27 +37,27 @@
                 <div class="row booking-detail">
                     <div class="col-lg-6">
                         <label> Taxi Name: </label>
-                        <span class="">{{ $booking->taxiDetail->taxi->name ?? '' }}</span>
+                        <span class="">{{ $booking->details[0]->bookable_name ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label> Taxi Number: </label>
-                        <span class="">{{ $booking->taxiDetail->taxi->taxi_number ?? '' }}</span>
+                        <span class="">{{ $booking->bookable->taxi->taxi_number ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label> Model: </label>
-                        <span class="">{{ $booking->taxiDetail->taxi->model ?? '' }}</span>
+                        <span class="">{{ $booking->bookable->taxi->model ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label> Driver Name: </label>
-                        <span class="">{{ $booking->taxiDetail->taxi->driver_name ?? '' }}</span>
+                        <span class="">{{ $booking->bookable->taxi->driver_name ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label> Driver Number: </label>
-                        <span class="">{{ $booking->taxiDetail->taxi->driver_number ?? '' }}</span>
+                        <span class="">{{ $booking->bookable->taxi->driver_number ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label> Price: </label>
-                        <span class="">NPr {{ $booking->taxiDetail->price?? '' }}</span>
+                        <span class="">NPr {{ $booking->booking_price?? '' }}</span>
                     </div>
                 </div>
                 <br>
@@ -68,23 +68,27 @@
                 <div class="row booking-detail">
                     <div class="col-lg-6">
                         <label>Name: </label>
-                        <span class="">{{ $booking->name ?? '' }}</span>
+                        <span class="">{{ $booking->details[0]->name ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label>Email: </label>
-                        <span class="">{{ $booking->email ?? '' }}</span>
+                        <span class="">{{ $booking->details[0]->email ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label>Phone: </label>
-                        <span class="">{{ $booking->phone ?? '' }}</span>
+                        <span class="">{{ $booking->details[0]->phone ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label>Address: </label>
-                        <span class="">{{ $booking->address ?? '' }}</span>
+                        <span class="">{{ $booking->details[0]->address ?? '' }}</span>
                     </div>
                     <div class="col-lg-6">
                         <label>Status: </label>
                         <span class="">{{ $booking->status ?? '' }}</span>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Status: </label>
+                        <span class="">{{ $booking->payment_status ? 'Paid': 'Unpaid' }}</span>
                     </div>
                 </div>
             </div>

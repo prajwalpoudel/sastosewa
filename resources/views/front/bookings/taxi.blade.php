@@ -12,7 +12,7 @@
         <div class="card bg-white p-4 mx-4 mb-4">
             <div class="grid grid-cols-5 gap-2 justify-between">
                 <div class="font-bold">
-                    <h3>Date</h3>
+                    <h3>Booking Date</h3>
                 </div>
                 <div class="font-bold">
                     <h3>From</h3>
@@ -31,16 +31,16 @@
                         <p>{{ \Carbon\Carbon::parse($booking->created_at)->toFormattedDateString() }}</p>
                     </div>
                     <div>
-                        <p>{{ $booking->taxiDetail->from ?? null }}</p>
+                        <p>{{ $booking->details[0]->from ?? null }}</p>
                     </div>
                     <div>
-                        <p>{{ $booking->taxiDetail->to ?? null }}</p>
+                        <p>{{ $booking->details[0]->to ?? null }}</p>
                     </div>
                     <div>
-                        <p>{{ $booking->taxiDetail->price ?? null }}</p>
+                        <p>{{ $booking->booking_price ?? null }}</p>
                     </div>
                     <div>
-                        <h3>Action</h3>
+                        <a class="text-sm text-rose-700" href="{{ route('front.bookings.show', $booking->id) }}">View</a>
                     </div>
                 @empty
                     <p>No Taxi Bookings Found</p>
@@ -49,4 +49,5 @@
 
         </div>
     </div>
+
 </div>

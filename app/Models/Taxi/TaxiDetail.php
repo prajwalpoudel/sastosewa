@@ -2,10 +2,12 @@
 
 namespace App\Models\Taxi;
 
+use App\Models\Booking;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class TaxiDetail extends Model
 {
@@ -21,11 +23,12 @@ class TaxiDetail extends Model
         return $this->belongsTo(Taxi::class);
     }
 
+
     /**
-     * @return HasMany
+     * @return MorphMany
      */
-    public function bookings(): HasMany
+    public function bookings(): MorphMany
     {
-        return $this->hasMany(TaxiBooking::class);
+        return $this->morphMany(Booking::class, 'bookable');
     }
 }
