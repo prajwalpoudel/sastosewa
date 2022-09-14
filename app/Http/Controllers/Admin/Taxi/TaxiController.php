@@ -30,9 +30,9 @@ class TaxiController extends Controller
      */
     public function index(Request $request)
     {
-//        if ($request->wantsJson()) {
+        if ($request->wantsJson()) {
             return $this->taxiService->datatable($request);
-//        }
+        }
 
         return view($this->view.'index');
     }

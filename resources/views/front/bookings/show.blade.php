@@ -22,17 +22,21 @@
                     <div class="px-8 py-4">
                         <div class="pb-2 text-sm grid grid-cols-2">
                             <span class="block">Booking Status: {{ $booking->status ? 'Accepted' : 'Pending' }}</span>
-                            <span class="block">Payment Status: {{ $booking->payment_status ? 'Accepted' : 'Pending' }}</span>
+                            <span
+                                class="block">Payment Status: {{ $booking->payment_status ? 'Accepted' : 'Pending' }}</span>
                         </div>
-                        <h3 class="text-rose-700 font-semibold">{{ $booking->bookable->category->name }} Trip Details</h3>
+                        <h3 class="text-rose-700 font-semibold">{{ $booking->bookable->category->name }} Trip
+                            Details</h3>
                         <div class="grid grid-cols-2">
                             <div class="p-2">
                                 <p class="text-base">{{ $booking->details[0]->departure_address.', '.$booking->details[0]->from}}</p>
-                                <p class="text-base">{{ \Carbon\Carbon::parse($booking->details[0]->departure_time)->isoFormat("HH:mm A") }}, {{ \Carbon\Carbon::parse($booking->details[0]->date)->isoFormat('ddd, MMM DD, YYYY') }}</p>
+                                <p class="text-base">{{ \Carbon\Carbon::parse($booking->details[0]->departure_time)->isoFormat("HH:mm A") }}
+                                    , {{ \Carbon\Carbon::parse($booking->details[0]->date)->isoFormat('ddd, MMM DD, YYYY') }}</p>
                             </div>
                             <div class="p-2">
                                 <p class="text-base">{{ $booking->details[0]->arrival_address.', '.$booking->details[0]->to}}</p>
-                                <p class="text-base">{{ \Carbon\Carbon::parse($booking->details[0]->arrival_time)->isoFormat("HH:mm A") }}, {{ \Carbon\Carbon::parse($booking->details[0]->date)->isoFormat('ddd, MMM DD, YYYY') }}</p>
+                                <p class="text-base">{{ \Carbon\Carbon::parse($booking->details[0]->arrival_time)->isoFormat("HH:mm A") }}
+                                    , {{ \Carbon\Carbon::parse($booking->details[0]->date)->isoFormat('ddd, MMM DD, YYYY') }}</p>
                             </div>
                         </div>
                     </div>
@@ -42,8 +46,10 @@
                     </div>
                     <div class="px-8 py-4">
                         <div class="pb-2 text-sm grid grid-cols-2">
-                            <span class="flex justify-start">Booking Status: {{ $booking->status ? 'Accepted' : 'Pending' }}</span>
-                            <span class="flex justify-end">Payment Status: {{ $booking->payment_status ? 'Accepted' : 'Pending' }}</span>
+                            <span
+                                class="flex justify-start">Booking Status: {{ $booking->status ? 'Accepted' : 'Pending' }}</span>
+                            <span
+                                class="flex justify-end">Payment Status: {{ $booking->payment_status ? 'Accepted' : 'Pending' }}</span>
                         </div>
                         <h3 class="text-rose-700 font-semibold">Trip Details</h3>
                         <div class="grid grid-cols-2">
@@ -73,7 +79,34 @@
                             </div>
                         </div>
                     </div>
-
+                @elseif($booking->bookable instanceof \App\Models\Taxi\TaxiDetail)
+                    <div class="px-8 py-4">
+                        <div class="pb-2 text-sm grid grid-cols-2">
+                            <span
+                                class="flex justify-start">Booking Status: {{ $booking->status ? 'Accepted' : 'Pending' }}</span>
+                            <span
+                                class="flex justify-end">Payment Status: {{ $booking->payment_status ? 'Accepted' : 'Pending' }}</span>
+                        </div>
+                        <h3 class="text-rose-700 font-semibold">Taxi Details</h3>
+                        <div class="grid grid-cols-2">
+                            <div class="pt-2 px-2 flex">
+                                <span class="text-base">Name: </span>
+                                <span class="text-base">{{ $booking->details[0]->bookable_name ?? null }}</span>
+                            </div>
+                            <div class="pt-2 px-2  flex ">
+                                <span class="text-base">From: </span>
+                                <span class="text-base">{{ $booking->details[0]->from }}</span>
+                            </div>
+                            <div class="px-2 flex ">
+                                <span class="text-base">To: </span>
+                                <span class="text-base">{{ $booking->details[0]->to }}</span>
+                            </div>
+                            <div class="px-2 flex">
+                                <span class="text-base">Price: </span>
+                                <span class="text-base">NRs {{ $booking->booking_price }}</span>
+                            </div>
+                        </div>
+                    </div>
                 @endif
                 <div class="px-8">
                     <h3 class="text-rose-700 font-semibold">Booking Details</h3>
@@ -109,7 +142,7 @@
 
                 </div>
                 <div class="py-4 flex justify-center">
-                    <a href="{{ route('front.bookings.index') }}"  class="text-rose-700 px-8">
+                    <a href="{{ route('front.bookings.index') }}" class="text-rose-700 px-8">
                         Cancel
                     </a>
                 </div>

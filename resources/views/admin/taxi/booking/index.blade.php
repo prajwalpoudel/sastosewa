@@ -25,6 +25,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Status</th>
+                    <th>Payment Status</th>
                     <th style="text-align: center">Actions</th>
                 </tr>
                 </thead>
@@ -48,12 +49,13 @@
             order: [[1, 'asc']],
             columns: [
                 {data: 'DT_RowIndex', searchable: false, orderable: false, width: '5%'},
-                {data: 'taxi_name', name: 'taxiDetail.taxi.name'},
+                {data: 'bookable_name', name: 'bookable_name'},
                 {data: 'name', name: 'name'},
                 {data: 'address', name: 'address'},
                 {data: 'email', name: 'email'},
                 {data: 'phone', name: 'phone'},
                 {data: 'status', name: 'status'},
+                {data: 'payment_status', name: 'payment_status'},
                 {data: 'action', 'name': 'action', searchable: false, orderable: false, className: 'dt-body-center'}
             ],
         });
