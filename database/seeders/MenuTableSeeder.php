@@ -136,7 +136,6 @@ class MenuTableSeeder extends Seeder
                         ],
                     ],
                     [
-
                         "title" => "Ticket",
                         "class" => "nav-item",
                         "order" => 3,
@@ -150,6 +149,19 @@ class MenuTableSeeder extends Seeder
                             'admin.ticket.edit',
                         ],
                     ],
+                    [
+                        "title" => "Bookings",
+                        "class" => "nav-item",
+                        "order" => 2,
+                        "icon" => "fa fa-envelope",
+                        "status" => true,
+                        "route" => "admin.ticket.booking.index",
+                        "group_id" => MenuGroupConstant::ADMIN_ID,
+                        "related_routes" => [
+                            'admin.ticket.booking.index',
+                            'admin.ticket.booking.show',
+                        ],
+                    ],
                 ],
                 "related_routes" => [
                     'admin.ticket.category.index',
@@ -161,6 +173,8 @@ class MenuTableSeeder extends Seeder
                     'admin.ticket.index',
                     'admin.ticket.create',
                     'admin.ticket.edit',
+                    'admin.ticket.booking.index',
+                    'admin.ticket.booking.show',
                 ],
             ],
             [
@@ -202,6 +216,19 @@ class MenuTableSeeder extends Seeder
                             'admin.tour.edit',
                         ],
                     ],
+                    [
+                        "title" => "Bookings",
+                        "class" => "nav-item",
+                        "order" => 2,
+                        "icon" => "fa fa-envelope",
+                        "status" => true,
+                        "route" => "admin.tour.booking.index",
+                        "group_id" => MenuGroupConstant::ADMIN_ID,
+                        "related_routes" => [
+                            'admin.tour.booking.index',
+                            'admin.tour.booking.show',
+                        ],
+                    ],
                 ],
                 "related_routes" => [
                     'admin.tour.category.index',
@@ -210,6 +237,8 @@ class MenuTableSeeder extends Seeder
                     'admin.tour.index',
                     'admin.tour.create',
                     'admin.tour.edit',
+                    'admin.tour.booking.index',
+                    'admin.tour.booking.show',
                 ],
             ],
             [
@@ -275,6 +304,40 @@ class MenuTableSeeder extends Seeder
                     'admin.taxi-detail.edit',
                     'admin.taxi-booking.index',
                     'admin.taxi-booking.show',
+                ],
+            ],
+            [
+                "title" => "Countries",
+                "class" => "nav-item",
+                "order" => 4,
+                "icon" => "fa fa-envelope",
+                "status" => true,
+                "route" => "admin.country.index",
+                "group_id" => MenuGroupConstant::ADMIN_ID,
+                "children" => [
+
+                ],
+                "related_routes" => [
+                    'admin.country.index',
+                    'admin.country.create',
+                    'admin.country.edit'
+                ],
+            ],
+            [
+                "title" => "Labor",
+                "class" => "nav-item",
+                "order" => 4,
+                "icon" => "fa fa-envelope",
+                "status" => true,
+                "route" => "admin.labor.index",
+                "group_id" => MenuGroupConstant::ADMIN_ID,
+                "children" => [
+
+                ],
+                "related_routes" => [
+                    'admin.labor.index',
+                    'admin.labor.create',
+                    'admin.labor.edit'
                 ],
             ],
             [

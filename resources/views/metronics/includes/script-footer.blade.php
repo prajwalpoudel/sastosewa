@@ -25,6 +25,8 @@
 {{--Additional Scripts--}}
 <script src="{{ asset('metronics') }}/js/datatables.bundle.js" type="text/javascript"></script>
 <script src="{{ asset('metronics') }}/js/select2.full.js" type="text/javascript"></script>
+<script src="{{ asset('metronics') }}/js/summer-note.js" type="text/javascript"></script>
+
 
 {{--Additional Scripts--}}
 

@@ -13,7 +13,7 @@
     @stack('style')
 </head>
 <body class="bg-gray-100">
-    <div class="container">
+    <div class="">
         @include('front.layouts.navigation')
         <main class="">
             @yield('content')
