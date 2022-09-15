@@ -25,6 +25,10 @@ Route::patch('profile/{id}', 'ProfileController@update')->name('profile.update')
 Route::get('bookings', 'BookingController@index')->name('bookings.index');
 Route::get('bookings/{id}', 'BookingController@show')->name('bookings.show');
 
+Route::get('labor', 'LaborController@index')->name('labor.index');
+Route::get('labor/{id}', 'LaborController@show')->name('labor.show');
+
+
 
 
 

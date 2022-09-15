@@ -27,6 +27,7 @@
 <link href="{{ asset('metronics') }}/css/owl.carousel.css" rel="stylesheet" type="text/css" />
 <link href="{{ asset('metronics') }}/css/owl.theme.default.css" rel="stylesheet" type="text/css" />
 <link href="{{ asset('metronics') }}/css/dropzone.css" rel="stylesheet" type="text/css" />
+<link href="{{ asset('metronics') }}/css/summer-note.css" rel="stylesheet" type="text/css" />
 
 
 <link href="{{ asset('metronics') }}/css/summernote.css" rel="stylesheet" type="text/css" />

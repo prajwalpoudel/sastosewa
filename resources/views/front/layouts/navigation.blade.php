@@ -32,7 +32,7 @@
                         <a href="{{url('design/tours')}}">Driving School</a>
                     </div>
                     <div>
-                        <a href="{{url('design/tours')}}">Labour (श्रम)</a>
+                        <a href="{{route('front.labor.index')}}">Labour (श्रम)</a>
                     </div>
                 </div>
             </li>
