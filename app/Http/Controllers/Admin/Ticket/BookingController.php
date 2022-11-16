@@ -3,18 +3,40 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket\Ticket;
+use App\Services\Admin\BookingService;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
     /**
+     * @var string
+     */
+    private $view = 'admin.tickets.booking.';
+    private BookingService $bookingService;
+
+    /**
+     * BookingController constructor.
+     * @param BookingService $bookingService
+     */
+    public function __construct(
+        BookingService $bookingService
+    )
+    {
+        $this->bookingService = $bookingService;
+    }
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
-    public function index()
+    public function index(Request $request): mixed
     {
-        //
+        if ($request->wantsJson()) {
+            return $this->bookingService->datatable($request, Ticket::class);
+        }
+
+        return view($this->view.'index');
     }
 
     /**
@@ -46,7 +68,8 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        $booking = $this->bookingService->findOrFail($id)->load(['details', 'bookable']);
+        return view($this->view.'show', compact('booking'));
     }
 
     /**
