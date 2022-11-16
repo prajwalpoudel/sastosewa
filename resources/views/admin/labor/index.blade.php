@@ -28,7 +28,7 @@
                 <tr>
                     <th>#</th>
                     <th>Country</th>
-                    <th>Content</th>
+                    <th>Is Popular</th>
                     <th style="text-align: center">Actions</th>
                 </tr>
                 </thead>
@@ -53,7 +53,7 @@
             columns: [
                 {data: 'DT_RowIndex', searchable: false, orderable: false, width: '5%'},
                 {data: 'country', name: 'country.name'},
-                {data: 'content', name: 'content'},
+                {data: 'is_popular', name: 'is_popular', searchable: false, orderable: false, className: 'dt-body-center'},
                 {data: 'action', 'name': 'action', searchable: false, orderable: false, className: 'dt-body-center'}
             ],
         });

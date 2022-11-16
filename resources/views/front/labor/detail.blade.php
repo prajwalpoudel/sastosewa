@@ -11,12 +11,31 @@
                     <p>{{ $labor->country->name ?? null }}</p>
                 </div>
                 <div class="text-base">
-                        <p class="text-rose-700 font-bold">Description</p>
-                        {!! $labor->country->description ?? null !!}
+                    <p class="text-rose-700 font-bold">Description</p>
+                    {!! $labor->country->description ?? null !!}
                 </div>
                 <div class="text-base my-2">
                     <p class="text-rose-700 font-bold">Documents</p>
-                    {!! $labor->content ?? null !!}
+                    @forelse($labor->documents as $document)
+                        <div class="py-2">
+                            <p class="font-medium">{{ $document->title }}</p>
+                            <div class="px-2 grid md:grid-cols-3 md:gap-2">
+                                @forelse($document->medias as $media)
+                                    <div class="py-2">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($media->media) }}" alt="" class="h-60">
+                                    </div>
+                                @empty
+                                    <div class="py-2">
+                                        <p>No media found</p>
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
+                    @empty
+                        <div class="py-2">
+                            <p class="font-medium">No Documents Found</p>
+                        </div>
+                    @endforelse
 
                 </div>
             </div>
@@ -38,7 +57,8 @@
                 </div>
             </div>
             <div class="py-2 px-8">
-                <a href="{{ route('front.labor.index') }}" class="text-rose-700 text-base underline underline-offset-4">Go Back</a>
+                <a href="{{ route('front.labor.index') }}" class="text-rose-700 text-base underline underline-offset-4">Go
+                    Back</a>
             </div>
         </div>
     </section>

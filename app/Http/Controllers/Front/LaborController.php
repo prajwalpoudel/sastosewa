@@ -47,7 +47,7 @@ class LaborController extends Controller
      * @return Application|Factory|View
      */
     public function show($id) {
-        $labor = $this->laborService->findOrFail($id)->load('country');
+        $labor = $this->laborService->findOrFail($id)->load(['country', 'documents.medias']);
 
         return view('front.labor.detail', compact('labor'));
     }

@@ -3,28 +3,21 @@
 namespace App\Http\Controllers\Admin\Labor;
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\CountryService;
-use App\Services\Admin\LaborService;
+use App\Services\Admin\LaborDocumentService;
 use Illuminate\Http\Request;
 
-class LaborController extends Controller
+class DocumentController extends Controller
 {
-    private $view = 'admin.labor.';
-    private LaborService $laborService;
-    private CountryService $countryService;
+    private $view = 'admin.labor.document.';
+    private LaborDocumentService $laborDocumentService;
 
     /**
-     * LaborController constructor.
-     * @param LaborService $laborService
-     * @param CountryService $countryService
+     * DocumentController constructor.
+     * @param LaborDocumentService $laborDocumentService
      */
-    public function __construct(
-        LaborService $laborService,
-        CountryService $countryService
-    )
+    public function __construct(LaborDocumentService $laborDocumentService)
     {
-        $this->laborService = $laborService;
-        $this->countryService = $countryService;
+        $this->laborDocumentService = $laborDocumentService;
     }
 
     /**
@@ -34,9 +27,8 @@ class LaborController extends Controller
      */
     public function index(Request $request)
     {
-
         if ($request->wantsJson()) {
-            return $this->laborService->datatable($request);
+            return $this->laborDocumentService->datatable($request);
         }
 
         return view($this->view.'index');
@@ -47,12 +39,9 @@ class LaborController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($laborId)
     {
-        $countries = $this->countryService->all()->pluck('name', 'id');
-
-        return view($this->view.'create', compact('countries'));
-
+        return view($this->view.'create', compact('laborId'));
     }
 
     /**
@@ -63,11 +52,10 @@ class LaborController extends Controller
      */
     public function store(Request $request)
     {
-        $storeData = $request->only(['country_id']);
-        $storeData['is_popular'] = $request->boolean('is_popular');
-        $this->laborService->create($storeData);
+        $storeData = $request->only(['title', 'labor_id']);
+        $this->laborDocumentService->create($storeData);
 
-        return redirect()->route('admin.labor.index');
+        return redirect()->route('admin.labor.document.create', $request->input('labor_id'));
     }
 
     /**
@@ -89,10 +77,10 @@ class LaborController extends Controller
      */
     public function edit($id)
     {
-        $labor = $this->laborService->findOrFail($id);
-        $countries = $this->countryService->all()->pluck('name', 'id');
+        $document = $this->laborDocumentService->findOrFail($id);
+        $laborId = $document->labor_id;
 
-        return view($this->view.'edit', compact('labor', 'countries'));
+        return view($this->view.'edit', compact('document', 'laborId'));
     }
 
     /**
@@ -105,11 +93,9 @@ class LaborController extends Controller
     public function update(Request $request, $id)
     {
         $updateData = $request->all();
-        $updateData['is_popular'] = $request->boolean('is_popular');
+        $this->laborDocumentService->update($id, $updateData);
 
-        $this->laborService->update($id, $updateData);
-
-        return redirect()->route('admin.labor.index');
+        return redirect()->route('admin.labor.document.create', $request->input('labor_id'));
     }
 
     /**
@@ -120,7 +106,7 @@ class LaborController extends Controller
      */
     public function destroy($id)
     {
-        $this->laborService->destroy($id);
+        $this->laborDocumentService->destroy($id);
 
         return redirect()->back();
     }

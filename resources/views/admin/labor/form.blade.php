@@ -7,17 +7,6 @@
             <div id="country_id" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
-    </div>
-
-    {{--    <div class="form-group row is-valid">--}}
-    <div class="form-group row">
-        <div class="col-lg-12">
-            {!! Form::label('content', 'Content :') !!}
-            {!! Form::textarea('content', null, ['class' => 'form-control', 'id'=>'summernote']) !!}
-        </div>
-    </div>
-
-    <div class="form-group row">
         <div class="col-lg-6">
             {!! Form::label('status', 'Is Popular ? :') !!}
             <br>

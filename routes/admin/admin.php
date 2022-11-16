@@ -38,7 +38,15 @@ Route::resource('setting', 'SettingController');
 Route::resource('testimonial', 'TestimonialController');
 
 Route::group([ 'namespace' => 'Labor' ], function() {
-    Route::resource('labor', 'LaborController');
+    Route::resource('labor', 'LaborController')->except(['show']);
+    Route::group(['as' => 'labor.', 'prefix'=>'labor'], function() {
+        Route::get('document/{laborId}/create', 'DocumentController@create')->name('document.create');
+        Route::resource('document', 'DocumentController')->except(['create', 'show']);
+        Route::group(['as' => 'document.', 'prefix' => 'document'], function() {
+            Route::get('media/{laborDocumentId}/create', 'DocumentMediaController@create')->name('media.create');
+            Route::resource('media', 'DocumentMediaController')->except(['create']);
+        });
+    });
 });
 Route::resource('country', 'CountryController');
 
