@@ -4,14 +4,14 @@
 namespace App\Services\Admin;
 
 
-use App\Models\Labor;
+use App\Models\LaborDocumentMedia;
 use App\Services\General\BaseService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 
-class LaborService extends BaseService
+class LaborDocumentMediaService extends BaseService
 {
     private DataTables $dataTables;
 
@@ -30,9 +30,8 @@ class LaborService extends BaseService
     /**
      * @return string
      */
-    public function model()
-    {
-        return Labor::class;
+    public function model() {
+        return LaborDocumentMedia::class;
     }
 
     /**
@@ -43,17 +42,13 @@ class LaborService extends BaseService
         $query = $this->datatableQuery();
 
         return $this->dataTables->of($query)
-            ->editColumn('country', function($q) {
-                $otherLinks = '<a class="mr-1 pr-2" href="'. route("admin.labor.document.create", $q) .'"> <i class="la la-file la-lg"></i></a>';
-                return $q->country->name . ' '. $otherLinks ;
-            })
-            ->editColumn('is_popular', function($q){
-                $value = $q->is_popular;
-                return  view('admin.datatable.checkbox', compact('value'));
+            ->editColumn('media', function($q) {
+                return '<img src="'. Storage::url($q->media) .'" height="48px" width="60px"/>';
+
             })
             ->addColumn('action', function ($q) {
                 $params = [
-                    'route' => 'admin.labor',
+                    'route' => 'admin.labor.document.media',
                     'id' => $q->id,
                     'edit' => true,
                     'delete' => true,
@@ -61,7 +56,7 @@ class LaborService extends BaseService
 
                 return view('admin.datatable.action', compact('params'));
             })
-            ->rawColumns(['action', 'content', 'country', 'is_popular'])
+            ->rawColumns(['action', 'media'])
             ->addIndexColumn()
             ->make(true);
     }
@@ -70,7 +65,10 @@ class LaborService extends BaseService
      * @return Collection|Model[]
      */
     public function datatableQuery() {
-        return $this->query()->with('country')->select(['labors.*']);
+        $query = $this->query();
+        if($laborDocumentId = request()->input('laborDocumentId')) {
+            $query = $query->where('labor_document_id', $laborDocumentId);
+        }
+        return $query->select(['labor_document_media.*']);
     }
-
 }
