@@ -61,7 +61,7 @@
 }
 
 .dropdown-content {
-    @apply absolute hidden group-hover:block z-30 border-2 bg-white top-full left-0 right-auto w-max divide-y-2 text-gray-700;
+    @apply absolute hidden group-hover:block z-30 border-primary md:border-white border-2 bg-primary md:bg-white top-full left-48 md:left-0 right-auto w-max divide-y-2 text-white md:text-gray-700;
 }
 
 .dropdown-content>div {

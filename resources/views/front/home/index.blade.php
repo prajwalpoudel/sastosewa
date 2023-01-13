@@ -49,7 +49,7 @@
                 <!-- Carousel wrapper -->
                 <div class="overflow-hidden relative h-72">
                     @foreach($sections['home_banner']['medias'] as  $key => $media)
-                        <div class="hidden duration-1200 ease-linear"
+                        <div class="hidden duration-1200 ease-linear z-10"
                              data-carousel-item="{{ ($key == 0) ? 'active' : '' }}">
                             @if($media['type'] == 'Image')
                                 <div

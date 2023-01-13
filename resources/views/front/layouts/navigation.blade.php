@@ -2,8 +2,8 @@
     <div class="nav-logo">
         <p>Logo Here</p>
     </div>
-    <div class="hidden md:block">
-        <ul class="flex">
+    <div class="hidden w-48 md:w-auto absolute bg-primary text-white top-14 left-0 md:static md:block z-30" id="navbar">
+        <ul class="flex flex-col md:flex-row">
             <li class="nav-link {{ getActiveNavClass('front.index') }}">
                 <a class="py-4" href="{{ route('front.index') }}">
                     Home
@@ -71,5 +71,13 @@
 
             @endif
         </ul>
+    </div>
+    <div class="md:hidden">
+        <button id="menu">
+            <i class="fa-solid fa-bars" ></i>
+        </button>
+        <button class="hidden"  id="close">
+            <i class="fa-solid fa-times "></i>
+        </button>
     </div>
 </nav>
