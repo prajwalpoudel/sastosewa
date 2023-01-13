@@ -1531,7 +1531,7 @@ textarea.form-control {
   box-shadow: 0 0 0 0.2rem rgba(29, 201, 183, 0.25); }
 
 .invalid-feedback {
-  display: none;
+  display: block;
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
@@ -10311,7 +10311,7 @@ canvas {
   -ms-user-select: none; }
 
 /* Customize website's scrollbar like Mac OS */
-/* 
+/*
 ::-webkit-scrollbar {
     background-color:#f6f6f6;
     width:14px;

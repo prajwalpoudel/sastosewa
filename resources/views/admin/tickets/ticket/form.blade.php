@@ -11,8 +11,8 @@
         <div class="col-lg-6">
             {!! Form::label('brand_id', 'Brand :') !!}
             {!!Form::select('brand_id', [], null, ['class' => 'form-control', 'id' => 'brand_id'])!!}
-            @error('brand_id'))
-                <div id="category_id" class="error invalid-feedback"> {{ $message }}</div>
+            @error('brand_id')
+                <div id="brand_id" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
     </div>
@@ -29,7 +29,7 @@
         <div class="col-lg-6">
             {!! Form::label('to', 'To :') !!}
             {!!Form::text('to', null, ['class' =>  'form-control', 'id' => 'price'])!!}
-            @error('to'))
+            @error('to')
             <div id="category_id" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TicketCategoryRequest;
 use App\Services\Admin\Ticket\CategoryService;
 use Illuminate\Http\Request;
 
@@ -59,7 +60,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketCategoryRequest $request)
     {
         $category = $this->categoryService->create($request->all());
         flash('Ticket category added successfully.')->success();
@@ -98,7 +99,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TicketCategoryRequest $request, $id)
     {
         $category = $this->categoryService->update($id, $request->all());
         flash('Ticket category updated successfully.')->success();

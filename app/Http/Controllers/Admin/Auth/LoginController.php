@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,14 +16,14 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:front')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
     }
 
     /**
      * @return Application|Factory|View
      */
     public function create() {
-        return view('front.auth.login');
+        return view('admin.auth.login');
     }
 
 
@@ -37,9 +38,9 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if ($this->guard()->attempt(array_merge($credentials, ['is_admin' => false]))) {
+        if($this->guard()->attempt(array_merge($credentials, ['is_admin' => true]))) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended(RouteServiceProvider::ADMIN);
         }
 
         return back()->withErrors([
@@ -58,7 +59,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 
     /**
@@ -68,6 +69,6 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('front');
+        return Auth::guard('admin');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TicketBrandRequest;
 use App\Services\Admin\Ticket\BrandService;
 use App\Services\Admin\Ticket\CategoryService;
 use Illuminate\Http\Request;
@@ -62,7 +63,7 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketBrandRequest $request)
     {
         $storeData = $request->all();
         if($logo = $request->file('logo')) {
@@ -107,7 +108,7 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TicketBrandRequest $request, $id)
     {
         DB::beginTransaction();
         $brand = $this->brandService->findOrFail($id);

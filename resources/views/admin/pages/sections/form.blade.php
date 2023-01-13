@@ -4,14 +4,14 @@
             {!! Form::label('page_title', 'Section Title :') !!}
             {!! Form::text('page_title', null, ['class' => 'form-control']) !!}
             @error('page_title')
-            <div id="name" class="error invalid-feedback"> {{ $message }}</div>
+            <div id="page_title" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
 
         <div class="col-lg-6">
             {!! Form::label('page_id', 'Page :') !!}
             {!!Form::select('page_id', $pages, null, ['class' => 'form-control', 'id' => 'parent_id'])!!}
-            @error('parent_id'))
+            @error('page_id'))
             <div id="parent_id" class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
