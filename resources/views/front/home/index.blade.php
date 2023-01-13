@@ -164,7 +164,7 @@
                 <div class="text-title text-capitalize text-center my-2 font-bold">
                     <p>Testimonials</p>
                 </div>
-                <div class="bg-everest bg-center bg-fixed testimonial-image h-[36rem]">
+                <div class="bg-everest bg-center bg-fixed testimonial-image h-auto md:h-[36rem]">
                     @if($testimonials->count() > 1)
                         <div id="default-carousel" class="relative" data-carousel="slide">
                             <!-- Carousel wrapper -->
@@ -180,11 +180,11 @@
                                                     alt="">
                                             </div>
                                             <div class="client-content px-12 md:px-60 font-medium">
-                                                <p>{!! $testimonial->description !!}</p>
+                                                <p class="text-center">{!! $testimonial->description !!}</p>
                                             </div>
-                                            <div class="client-intro px-12 md:px-60 my-12 ">
+                                            <div class="client-intro px-12 md:px-60 my-4 md:my-12">
                                                 <p class="font-bold text-2xl text-center">{{ $testimonial->name }}</p>
-                                                <p>{{ $testimonial->position .', '. $testimonial->company }}</p>
+                                                <p class="text-center">{{ $testimonial->position .', '. $testimonial->company }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -241,12 +241,12 @@
                                      class="rounded-full h-32 w-32"
                                      alt="">
                             </div>
-                            <div class="client-content px-60 font-medium">
-                                <p>{!! $testimonials[0]->description !!}</p>
+                            <div class="client-content px-12 md:px-60 font-medium">
+                                <p class="text-center">{!! $testimonials[0]->description !!}</p>
                             </div>
-                            <div class="client-intro px-60 my-12 ">
+                            <div class="client-intro px-12 md:px-60 my-4 md:my-12 ">
                                 <p class="font-bold text-2xl text-center">{{ $testimonials[0]->name }}</p>
-                                <p>{{ $testimonials[0]->position .', '. $testimonials[0]->company }}</p>
+                                <p class="text-center">{{ $testimonials[0]->position .', '. $testimonials[0]->company }}</p>
                             </div>
                         </div>
                     @endif

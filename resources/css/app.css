@@ -19,7 +19,7 @@
     @apply text-4xl py-2 text-rose-700
 }
 .text-secondary-title {
-    @apply text-2xl py-2 font-bold pb-4 tracking-normal text-primary
+    @apply text-2xl py-2 font-bold pb-4 tracking-normal text-rose-700
 }
 .text-service-title {
     @apply text-2xl py-2 font-medium tracking-normal text-rose-700
@@ -33,7 +33,7 @@
 }
 
 .read-more-button {
-    @apply bg-primary text-white p-2 h-8 w-full justify-center flex items-center rounded-xl;
+    @apply bg-rose-700 text-white p-2 h-8 w-full justify-center flex items-center rounded-xl;
 }
 
 .button-div {

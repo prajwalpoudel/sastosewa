@@ -46,7 +46,7 @@
 
 
             <div class="content-container text-neutral-700 tracking-wider text-lg">
-                <div class="grid grid-cols-3 gap-2">
+                <div class="grid md:grid-cols-3 md:gap-2">
                     @forelse($taxies as $taxi)
                         <div class="card bg-white p-4 m-4">
                             <div class="grid grid-cols-3 gap-2 justify-between">

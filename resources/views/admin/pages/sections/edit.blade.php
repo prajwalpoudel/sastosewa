@@ -16,3 +16,13 @@
         </div>
     </section>
 @endsection
+@push('script')
+    @stack('form-script')
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 150
+            });
+        });
+    </script>
+@endpush
