@@ -31,9 +31,9 @@
     <div class="form-group row">
         <div class="col-lg-12">
             {!! Form::label('description', 'Description :') !!}
-            {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control', 'id'=>'summernote']) !!}
             @error('description')
-            <div id="name" class="error invalid-feedback"> {{ $message }}</div>
+            <div class="error invalid-feedback"> {{ $message }}</div>
             @enderror
         </div>
     </div>

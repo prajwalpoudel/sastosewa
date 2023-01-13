@@ -60,7 +60,7 @@
                 <div class="contact">
                     <p class="text-xl text-zinc-800 font-medium">Contact Details</p>
                     <div class="flex flex-col w-full my-4">
-                        <div class="grid grid-cols-2 gaps-8">
+                        <div class="grid md:grid-cols-2 md:gaps-8">
                             <div>
                                 <div class="flex items-center">
                                     <i class="fa-solid fa-location-dot p-2"></i>
@@ -79,7 +79,7 @@
                                     <p>9862078434</p>
                                 </div>
                             </div>
-                            <div>
+                            <div class="mt-4 md:mt-0">
                                 <p>Follow us on</p>
                                 <div class="py-5">
                                     <i class="fa-brands fa-facebook text-4xl px-2"></i>
@@ -88,9 +88,7 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                     <div>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.821433829939!2d87.27615371498817!3d26.461484283323962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef7441a7505419%3A0x844447804f9bbd5c!2sStar%20Dental%20Hospital!5e0!3m2!1sen!2snp!4v1648528057822!5m2!1sen!2snp"
