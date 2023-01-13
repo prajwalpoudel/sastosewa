@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Tour;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TourCategoryRequest;
 use App\Services\Admin\Tour\CategoryService;
 use Illuminate\Http\Request;
 
@@ -59,7 +60,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TourCategoryRequest $request)
     {
         $category = $this->categoryService->create($request->all());
         flash('Tour category added successfully.')->success();
@@ -98,7 +99,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TourCategoryRequest $request, $id)
     {
         $category = $this->categoryService->update($id, $request->all());
         flash('Tour category updated successfully.')->success();

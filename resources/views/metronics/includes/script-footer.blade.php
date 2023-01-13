@@ -1,6 +1,6 @@
 <script src="{{ asset('metronics') }}/js/jquery.js" type="text/javascript"></script>
-<script src="{{ asset('metronics') }}/js/popper.js" type="text/javascript"></script>
 <script src="{{ asset('metronics') }}/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="{{ asset('metronics') }}/js/popper.js" type="text/javascript"></script>
 <script src="{{ asset('metronics') }}/js/js.cookie.js" type="text/javascript"></script>
 <script src="{{ asset('metronics') }}/js/moment.min.js" type="text/javascript"></script>
 <script src="{{ asset('metronics') }}/js/tooltip.min.js" type="text/javascript"></script>

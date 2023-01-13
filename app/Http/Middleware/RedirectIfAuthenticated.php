@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Constants\RoleConstant;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
@@ -22,9 +23,18 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if($guard == 'admin')
+                {
+                    return redirect(RouteServiceProvider::ADMIN);
+                }
+                else
+                {
+                    return redirect(RouteServiceProvider::FRONT);
+                }
             }
+            return $next($request);
         }
 
         return $next($request);

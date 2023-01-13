@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TicketRequest;
 use App\Services\Admin\Ticket\CategoryService;
 use App\Services\Admin\Ticket\TicketService;
 use Illuminate\Http\Request;
@@ -66,7 +67,7 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketRequest $request)
     {
         $storeData = $request->all();
         $storeData['status'] = $request->boolean('status');
@@ -108,7 +109,7 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TicketRequest $request, $id)
     {
         $updateData = $request->all();
         $updateData['status'] = $request->boolean('status');

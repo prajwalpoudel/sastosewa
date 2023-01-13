@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SectionRequest;
 use App\Services\Admin\Cms\PageService;
 use App\Services\Admin\Cms\SectionService;
 use Illuminate\Http\Request;
@@ -62,7 +63,7 @@ class SectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SectionRequest $request)
     {
         $storeData = $request->all();
         $storeData['status'] = $request->boolean('status');
@@ -103,7 +104,7 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SectionRequest $request, $id)
     {
         $updateData = $request->all();
         $updateData['status'] = $request->boolean('status');
@@ -120,6 +121,8 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->sectionService->destroy($id);
+
+        return redirect()->back();
     }
 }
