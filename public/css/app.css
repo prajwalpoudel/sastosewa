@@ -904,6 +904,9 @@ input:checked + .toggle-bg {
 .top-28 {
   top: 7rem;
 }
+.top-14 {
+  top: 3.5rem;
+}
 .bottom-4 {
   bottom: 1rem;
 }
@@ -916,14 +919,14 @@ input:checked + .toggle-bg {
 .z-0 {
   z-index: 0;
 }
+.z-10 {
+  z-index: 10;
+}
 .z-30 {
   z-index: 30;
 }
 .z-20 {
   z-index: 20;
-}
-.z-10 {
-  z-index: 10;
 }
 .z-40 {
   z-index: 40;
@@ -2018,7 +2021,7 @@ input:checked + .toggle-bg {
 .dropdown-content {
   position: absolute;
   top: 100%;
-  left: 0px;
+  left: 12rem;
   right: auto;
   z-index: 30;
   display: none;
@@ -2035,14 +2038,29 @@ input:checked + .toggle-bg {
 
 .dropdown-content {
   border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(2 132 199 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .group:hover .dropdown-content {
   display: block;
+}
+
+@media (min-width: 768px) {
+
+  .dropdown-content {
+    left: 0px;
+    --tw-border-opacity: 1;
+    border-color: rgb(255 255 255 / var(--tw-border-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+  }
 }
 
 .dropdown-content>div:hover {
@@ -2618,6 +2636,10 @@ input:checked + .toggle-bg {
 }
 @media (min-width: 768px) {
 
+  .md\:static {
+    position: static;
+  }
+
   .md\:col-span-3 {
     grid-column: span 3 / span 3;
   }
@@ -2656,6 +2678,10 @@ input:checked + .toggle-bg {
     display: grid;
   }
 
+  .md\:hidden {
+    display: none;
+  }
+
   .md\:h-\[36rem\] {
     height: 36rem;
   }
@@ -2668,6 +2694,10 @@ input:checked + .toggle-bg {
     height: 32rem;
   }
 
+  .md\:w-auto {
+    width: auto;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2678,6 +2708,10 @@ input:checked + .toggle-bg {
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
   }
 
   .md\:flex-nowrap {

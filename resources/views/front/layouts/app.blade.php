@@ -26,6 +26,18 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/share.js') }}"></script>
+    <script>
+        $("#menu").click(function () {
+            $(this).hide();
+            $("#close").show();
+            $("#navbar").show();
+        })
+        $("#close").click(function () {
+            $(this).hide();
+            $("#menu").show();
+            $("#navbar").hide();
+        })
+    </script>
     @stack('script')
 {{--    <script>--}}
 {{--        let flashMessages = @json(session('flash_notification', []));--}}
